@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FreshBite | About Us</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#00A082",
+              "primary-dark": "#008a6e",
+              secondary: "#FF6B00",
+              dark: "#1e3932",
+              light: "#f9f9f9",
+              gray: "#5e5e5e",
+              "light-gray": "#eaeaea",
+            },
+            boxShadow: {
+              custom: "0 4px 12px rgba(0, 0, 0, 0.08)",
+              "custom-lg": "0 10px 25px rgba(0, 0, 0, 0.1)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f9f9f9;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        background: #00a082;
+        border-radius: 50%;
+        z-index: 1;
+      }
+
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        width: 2px;
+        height: calc(100% - 20px);
+        background: #00a082;
+        transform: translateX(-50%);
+      }
+
+      .timeline-item:last-child::after {
+        display: none;
+      }
+
+      .team-card:hover img {
+        transform: scale(1.05);
+      }
+
+      .testimonial-card {
+        transition: all 0.3s ease;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .mobile-menu {
+        transition: all 0.4s ease;
+        max-height: 0;
+        overflow: hidden;
+      }
+
+      .mobile-menu.open {
+        max-height: 500px;
+      }
+    </style>
+  </head>
+  <body class="bg-light text-dark">
+    <!-- Responsive Header -->
+    <header th:replace="layouts/webnavbar :: webnav"></header>
+
+    <!-- Hero Section -->
+    <section
+      class="relative py-20 md:py-28 bg-gradient-to-r from-primary to-primary-dark text-white">
+      <div
+        class="absolute inset-0 opacity-10"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1920&q=80');
+          background-size: cover;
+        "></div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">Our Story, Your Satisfaction</h1>
+          <p class="text-xl mb-8">
+            Discover the journey behind FreshBite and our commitment to delivering exceptional food
+            experiences.
+          </p>
+          <a
+            href="#"
+            class="inline-block px-8 py-3 bg-secondary hover:bg-orange-700 rounded-full font-bold text-lg transition"
+            >Order Now</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Humble Beginnings</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            From a small kitchen to serving thousands daily, our journey has been fueled by passion
+            and quality.
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          <!-- Timeline -->
+          <div class="relative">
+            <!-- Timeline Item 1 -->
+            <div class="mb-16 timeline-item relative">
+              <div class="md:flex items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                  <div class="bg-white rounded-xl shadow-custom p-6">
+                    <span class="text-secondary font-bold">2018</span>
+                    <h3 class="text-2xl font-bold my-3">The Idea Was Born</h3>
+                    <p class="text-gray-600">
+                      Founders Sarah and Michael started FreshBite with a simple idea: deliver
+                      restaurant-quality meals faster than anyone else. Their first kitchen was a
+                      small 300 sq ft space in downtown New York.
+                    </p>
+                  </div>
+                </div>
+                <div class="md:w-1/2">
+                  <img
+                    src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80"
+                    alt="First Kitchen"
+                    class="w-full rounded-xl shadow-custom" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="mb-16 timeline-item relative">
+              <div class="md:flex items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 order-2 md:pl-8">
+                  <div class="bg-white rounded-xl shadow-custom p-6">
+                    <span class="text-secondary font-bold">2020</span>
+                    <h3 class="text-2xl font-bold my-3">Expansion & Growth</h3>
+                    <p class="text-gray-600">
+                      During the pandemic, we expanded to 5 cities and partnered with 50+ local
+                      restaurants. Our delivery network grew to 200+ riders ensuring food arrives
+                      fresh and hot.
+                    </p>
+                  </div>
+                </div>
+                <div class="md:w-1/2 order-1">
+                  <img
+                    src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80"
+                    alt="Expansion"
+                    class="w-full rounded-xl shadow-custom" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="mb-16 timeline-item relative">
+              <div class="md:flex items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                  <div class="bg-white rounded-xl shadow-custom p-6">
+                    <span class="text-secondary font-bold">2022</span>
+                    <h3 class="text-2xl font-bold my-3">Technology Innovation</h3>
+                    <p class="text-gray-600">
+                      Launched our AI-powered app with predictive ordering and real-time tracking.
+                      Received the "Tech Innovation in Food" award for our sustainable packaging
+                      solutions.
+                    </p>
+                  </div>
+                </div>
+                <div class="md:w-1/2">
+                  <img
+                    src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80"
+                    alt="Technology"
+                    class="w-full rounded-xl shadow-custom" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline Item 4 -->
+            <div class="timeline-item relative">
+              <div class="md:flex items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 order-2 md:pl-8">
+                  <div class="bg-white rounded-xl shadow-custom p-6">
+                    <span class="text-secondary font-bold">2023</span>
+                    <h3 class="text-2xl font-bold my-3">Today & Beyond</h3>
+                    <p class="text-gray-600">
+                      Serving 20+ cities with 500+ restaurant partners and 1000+ delivery riders.
+                      Our mission remains the same: deliver happiness, one meal at a time.
+                    </p>
+                  </div>
+                </div>
+                <div class="md:w-1/2 order-1">
+                  <img
+                    src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80"
+                    alt="Today"
+                    class="w-full rounded-xl shadow-custom" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Mission -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Core Values</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            These principles guide everything we do at FreshBite
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="text-center p-8 bg-light rounded-xl shadow-custom transition-transform duration-300 hover:-translate-y-2">
+            <div
+              class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <i class="fas fa-bolt text-primary text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Lightning Fast Delivery</h3>
+            <p class="text-gray-600">
+              We guarantee delivery in under 30 minutes or your meal is free. Our optimized routing
+              ensures your food arrives hot and fresh.
+            </p>
+          </div>
+
+          <div
+            class="text-center p-8 bg-light rounded-xl shadow-custom transition-transform duration-300 hover:-translate-y-2">
+            <div
+              class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <i class="fas fa-leaf text-primary text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Quality Ingredients</h3>
+            <p class="text-gray-600">
+              We partner only with restaurants that use fresh, locally sourced ingredients. Every
+              dish meets our strict quality standards.
+            </p>
+          </div>
+
+          <div
+            class="text-center p-8 bg-light rounded-xl shadow-custom transition-transform duration-300 hover:-translate-y-2">
+            <div
+              class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <i class="fas fa-heart text-primary text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Customer Obsession</h3>
+            <p class="text-gray-600">
+              Your satisfaction is our priority. Our support team is available 24/7 to ensure every
+              experience with FreshBite is exceptional.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Meet Our Leadership</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            The passionate team behind FreshBite's success
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Team Member 1 -->
+          <div class="team-card bg-white rounded-xl shadow-custom overflow-hidden">
+            <div class="overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80"
+                alt="Sarah Johnson"
+                class="w-full h-64 object-cover transition-transform duration-500" />
+            </div>
+            <div class="p-6 text-center">
+              <h3 class="text-xl font-bold">Sarah Johnson</h3>
+              <p class="text-primary mb-3">CEO & Co-Founder</p>
+              <p class="text-gray-600 mb-4">
+                Former restaurant owner with 15 years in the food industry.
+              </p>
+              <div class="flex justify-center space-x-3">
+                <a
+                  href="#"
+                  class="w-8 h-8 bg-light-gray rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-8 h-8 bg-light-gray rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 2 -->
+          <div class="team-card bg-white rounded-xl shadow-custom overflow-hidden">
+            <div class="overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
+                alt="Michael Chen"
+                class="w-full h-64 object-cover transition-transform duration-500" />
+            </div>
+            <div class="p-6 text-center">
+              <h3 class="text-xl font-bold">Michael Chen</h3>
+              <p class="text-primary mb-3">CTO & Co-Founder</p>
+              <p class="text-gray-600 mb-4">
+                Tech entrepreneur with expertise in logistics and AI.
+              </p>
+              <div class="flex justify-center space-x-3">
+                <a
+                  href="#"
+                  class="w-8 h-8 bg-light-gray rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-8 h-8 bg-light-gray rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div class="team-card bg-white rounded-xl shadow-custom overflow-hidden">
+            <div class="overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"
+                alt="Jessica Williams"
+                class="w-full h-64 object-cover transition-transform duration-500" />
+            </div>
+            <div class="p-6 text-center">
+              <h3 class="text-xl font-bold">Jessica Williams</h3>
+              <p class="text-primary mb-3">Head of Operations</p>
+              <p class="text-gray-600 mb-4">
+                Supply chain expert with a passion for sustainable solutions.
+              </p>
+              <div class="flex justify-center space-x-3">
+                <a
+                  href="#"
+                  class="w-8 h-8 bg-light-gray rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-8 h-8 bg-light-gray rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 4 -->
+          <div class="team-card bg-white rounded-xl shadow-custom overflow-hidden">
+            <div class="overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80"
+                alt="David Rodriguez"
+                class="w-full h-64 object-cover transition-transform duration-500" />
+            </div>
+            <div class="p-6 text-center">
+              <h3 class="text-xl font-bold">David Rodriguez</h3>
+              <p class="text-primary mb-3">Head Chef & Culinary Director</p>
+              <p class="text-gray-600 mb-4">Award-winning chef with Michelin-star experience.</p>
+              <div class="flex justify-center space-x-3">
+                <a
+                  href="#"
+                  class="w-8 h-8 bg-light-gray rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-8 h-8 bg-light-gray rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                  <i class="fas fa-utensils"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gradient-to-r from-primary/10 to-primary-dark/10">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Customers Say</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">Real stories from people who love FreshBite</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card bg-white rounded-xl shadow-custom p-8">
+            <div class="flex items-center mb-6">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80"
+                alt="Emily R."
+                class="w-16 h-16 rounded-full object-cover" />
+              <div class="ml-4">
+                <h4 class="font-bold">Emily R.</h4>
+                <div class="text-secondary">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-4">
+              "FreshBite has transformed my busy workdays. The food arrives faster than I can make a
+              sandwich, and the quality is consistently excellent. Their app makes reordering my
+              favorites so easy!"
+            </p>
+            <div class="text-sm text-gray-500">Ordered 23 times in the last month</div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card bg-white rounded-xl shadow-custom p-8">
+            <div class="flex items-center mb-6">
+              <img
+                src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=100&q=80"
+                alt="James T."
+                class="w-16 h-16 rounded-full object-cover" />
+              <div class="ml-4">
+                <h4 class="font-bold">James T.</h4>
+                <div class="text-secondary">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-4">
+              "As a foodie, I'm picky about delivery services. FreshBite stands out with their
+              restaurant partnerships - I get gourmet meals from my favorite spots in under 30
+              minutes. The packaging keeps everything hot and fresh."
+            </p>
+            <div class="text-sm text-gray-500">Customer since 2020</div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card bg-white rounded-xl shadow-custom p-8">
+            <div class="flex items-center mb-6">
+              <img
+                src="https://images.unsplash.com/photo-1516726817505-f5ed825624d8?auto=format&fit=crop&w=100&q=80"
+                alt="Sophia M."
+                class="w-16 h-16 rounded-full object-cover" />
+              <div class="ml-4">
+                <h4 class="font-bold">Sophia M.</h4>
+                <div class="text-secondary">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-4">
+              "Their family meals have been a lifesaver! With two kids and a full-time job, cooking
+              isn't always an option. FreshBite's portions are generous and their healthy options
+              make me feel good about ordering regularly."
+            </p>
+            <div class="text-sm text-gray-500">Orders weekly with her family</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-primary text-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <div class="text-4xl md:text-5xl font-bold mb-2">500+</div>
+            <p>Restaurant Partners</p>
+          </div>
+          <div>
+            <div class="text-4xl md:text-5xl font-bold mb-2">20+</div>
+            <p>Cities Served</p>
+          </div>
+          <div>
+            <div class="text-4xl md:text-5xl font-bold mb-2">1M+</div>
+            <p>Deliveries Completed</p>
+          </div>
+          <div>
+            <div class="text-4xl md:text-5xl font-bold mb-2">4.8/5</div>
+            <p>Customer Rating</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- <footer class="bg-dark text-white pt-16 pb-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <div>
+            <h4
+              class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block"
+            >
+              FreshBite
+            </h4>
+            <p class="text-gray-300 mb-6">
+              Delivering delicious meals with speed and quality since 2020. Your
+              satisfaction is our priority.
+            </p>
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4
+              class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block"
+            >
+              Quick Links
+            </h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Menu</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4
+              class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block"
+            >
+              Our Policies
+            </h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Terms of Service</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Refund Policy</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Delivery Policy</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Sustainability</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4
+              class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block"
+            >
+              Contact Us
+            </h4>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                <span class="text-gray-300">123 Food Street, New York</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-phone text-primary mt-1 mr-3"></i>
+                <span class="text-gray-300">+1 (555) 123-4567</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-envelope text-primary mt-1 mr-3"></i>
+                <span class="text-gray-300">support@freshbite.com</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-clock text-primary mt-1 mr-3"></i>
+                <span class="text-gray-300">Mon-Sun: 10:00 AM - 11:00 PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-white/10 text-center text-gray-400">
+          <p>
+            &copy; 2023 FreshBite. All rights reserved. Designed with ❤️ for
+            food lovers.
+          </p>
+        </div>
+      </div>
+    </footer> -->
+    <footer th:replace="layouts/webfooter :: webfoot"></footer>
+
+    <!-- Floating Order Button (Mobile) -->
+    <div class="fixed bottom-6 right-6 md:hidden">
+      <a
+        href="#"
+        class="w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-lg hover:bg-primary-dark transition">
+        <i class="fas fa-utensils text-white text-xl"></i>
+      </a>
+    </div>
+
+    <script>
+      // Mobile menu toggle
+      document
+        .getElementById("mobileMenuButton")
+        .addEventListener("click", function () {
+          const mobileMenu = document.getElementById("mobileMenu");
+          mobileMenu.classList.toggle("open");
+
+          // Change icon
+          const icon = this.querySelector("i");
+          if (icon.classList.contains("fa-bars")) {
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-times");
+          } else {
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+          }
+        });
+    </script>
+  </body>
+</html>

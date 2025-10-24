@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>" "</title>
+  </head>
+  <body>
+    <!-- Responsive Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50" th:fragment="webnav">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <i class="fas fa-utensils text-secondary text-2xl mr-2"></i>
+            <span class="text-primary text-2xl font-bold">FreshBite</span>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:block">
+            <ul class="flex space-x-8">
+              <li>
+                <a href="/" class="text-gray-600 hover:text-primary transition">Home</a>
+              </li>
+              <li>
+                <a href="menu" class="text-gray-600 hover:text-primary transition">Menu</a>
+              </li>
+              <li>
+                <a href="offer" class="text-gray-600 hover:text-primary transition">Offers</a>
+              </li>
+              <li>
+                <a href="about" class="text-gray-600 hover:text-primary transition">About</a>
+              </li>
+              <li>
+                <a href="contact" class="text-gray-600 hover:text-primary transition">Contact</a>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Desktop Buttons -->
+          <span th:if="${session.loginUser ==null}">
+            <div class="hidden md:flex items-center space-x-4">
+              <a
+                th:href="@{login}"
+                class="px-4 py-2 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition flex items-center">
+                <i class="fas fa-user mr-2"></i> Sign In
+              </a>
+              <a
+                th:href="@{register}"
+                class="px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition flex items-center">
+                <i class="fas fa-user mr-2"></i> Sign Up
+              </a>
+            </div>
+          </span>
+          <span th:if="${session.loginUser !=null}">
+            <div class="hidden md:flex items-center space-x-4">
+              <div class="relative group">
+                <button class="flex items-center space-x-2">
+                  <img
+                    src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80"
+                    alt="User"
+                    class="w-10 h-10 rounded-full object-cover" />
+                  <span class="text-gray-600 font-medium" th:text="${user?.firstName} +' '+ ${user?.lastName[0]}+ '.'"></span>
+                </button>
+                <div
+                  class="absolute right-0 mt-2 w-56 bg-white shadow-custom-lg rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  <a th:href="@{profile}" class="block px-4 py-2 text-gray-800 hover:bg-light-gray"
+                    >My Profile</a
+                  >
+                  <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-light-gray"
+                    >Order History</a
+                  >
+                  <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-light-gray">Settings</a>
+                  <div class="border-t border-light-gray my-1"></div>
+                  <a th:href="@{logout}" class="block px-4 py-2 text-red-600 hover:bg-red-50">Logout</a>
+                </div>
+              </div>
+              <a
+                th:href="@{cart}"
+                class="px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition flex items-center relative">
+                <i class="fas fa-shopping-cart mr-2"></i>
+                <span class="hidden sm:inline">Cart</span>
+                <span
+                  class="absolute -top-2 -right-2 bg-secondary rounded-full w-6 h-6 flex items-center justify-center text-xs"
+                  >3</span
+                >
+              </a>
+            </div>
+          </span>
+          <!-- <span th:if="${session.loginUser !=null}">
+            <a
+              href="#"
+              class="px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition flex items-center relative"
+            >
+              <i class="fas fa-shopping-cart mr-2"></i>
+              <span class="hidden sm:inline">Cart</span>
+              <span
+                class="absolute -top-2 -right-2 bg-secondary rounded-full w-6 h-6 flex items-center justify-center text-xs"
+                >3</span
+              >
+            </a>
+          </span> -->
+
+          <!-- Mobile Menu Button -->
+          <button id="mobileMenuButton" class="md:hidden text-gray-600 focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="mobile-menu md:hidden bg-white">
+          <ul class="py-4 space-y-4 border-t">
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary"
+                >Menu</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-4 bg-primary/10 text-primary font-medium border-l-4 border-primary"
+                >Offers</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary"
+                >Contact</a
+              >
+            </li>
+            <li class="flex space-x-4 px-4 pt-4">
+              <a
+                href="#"
+                class="flex-1 text-center py-2 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition">
+                Sign In
+              </a>
+              <a
+                href="#"
+                class="flex-1 text-center py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition relative">
+                Cart
+                <span
+                  class="absolute -top-2 -right-2 bg-secondary rounded-full w-6 h-6 flex items-center justify-center text-xs"
+                  >3</span
+                >
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+  </body>
+</html>

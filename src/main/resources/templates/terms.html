@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshBite | Terms of Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A082',
+                        'primary-dark': '#008a6e',
+                        secondary: '#FF6B00',
+                        dark: '#1e3932',
+                        light: '#f9f9f9',
+                        gray: '#5e5e5e',
+                        'light-gray': '#eaeaea',
+                    },
+                    boxShadow: {
+                        'custom': '0 4px 12px rgba(0, 0, 0, 0.08)',
+                        'custom-lg': '0 10px 25px rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        .tos-nav {
+            position: sticky;
+            top: 120px;
+        }
+        
+        .tos-nav a {
+            display: block;
+            padding: 10px 15px;
+            border-left: 3px solid #eaeaea;
+            transition: all 0.3s ease;
+        }
+        
+        .tos-nav a:hover, .tos-nav a.active {
+            border-left: 3px solid #00A082;
+            background-color: rgba(0, 160, 130, 0.05);
+            color: #00A082;
+        }
+        
+        .section-content h3 {
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .section-content h3:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 12px;
+            height: 12px;
+            background-color: #00A082;
+            border-radius: 50%;
+        }
+        
+        .mobile-menu {
+            transition: all 0.4s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(120deg, rgba(0, 160, 130, 0.1), rgba(255, 107, 0, 0.1));
+            border-left: 4px solid #00A082;
+        }
+        
+        .term-card {
+            transition: all 0.3s ease;
+            border: 1px solid #eaeaea;
+        }
+        
+        .term-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Responsive Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <i class="fas fa-utensils text-secondary text-2xl mr-2"></i>
+                    <span class="text-primary text-2xl font-bold">FreshBite</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition">Home</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition">Menu</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition">Offers</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition">About</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- Desktop Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="px-4 py-2 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition flex items-center">
+                        <i class="fas fa-user mr-2"></i> Sign In
+                    </a>
+                    <a href="#" class="px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition flex items-center relative">
+                        <i class="fas fa-shopping-cart mr-2"></i> 
+                        <span class="hidden sm:inline">Cart</span>
+                        <span class="absolute -top-2 -right-2 bg-secondary rounded-full w-6 h-6 flex items-center justify-center text-xs">3</span>
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="md:hidden text-gray-600 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="mobile-menu md:hidden bg-white">
+                <ul class="py-4 space-y-4 border-t">
+                    <li><a href="#" class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary">Home</a></li>
+                    <li><a href="#" class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary">Menu</a></li>
+                    <li><a href="#" class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary">Offers</a></li>
+                    <li><a href="#" class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary">About</a></li>
+                    <li><a href="#" class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary">Contact</a></li>
+                    <li class="flex space-x-4 px-4 pt-4">
+                        <a href="#" class="flex-1 text-center py-2 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition">
+                            Sign In
+                        </a>
+                        <a href="#" class="flex-1 text-center py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition relative">
+                            Cart
+                            <span class="absolute -top-2 -right-2 bg-secondary rounded-full w-6 h-6 flex items-center justify-center text-xs">3</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="py-12 md:py-16 bg-gradient-to-r from-primary to-primary-dark text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-6">Terms of Service</h1>
+                <p class="text-xl mb-8">Please read these terms carefully before using our service</p>
+                <p class="opacity-90">Effective date: August 15, 2023</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms of Service Content -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Navigation Sidebar -->
+                <div class="lg:w-1/4">
+                    <div class="tos-nav bg-white rounded-lg shadow-custom p-6 hidden lg:block">
+                        <h3 class="text-lg font-bold mb-4">Terms Sections</h3>
+                        <a href="#introduction" class="active">Introduction</a>
+                        <a href="#account">Account Terms</a>
+                        <a href="#ordering">Ordering Process</a>
+                        <a href="#payments">Payments & Fees</a>
+                        <a href="#delivery">Delivery Terms</a>
+                        <a href="#cancellations">Cancellations</a>
+                        <a href="#conduct">User Conduct</a>
+                        <a href="#intellectual">Intellectual Property</a>
+                        <a href="#liability">Liability</a>
+                        <a href="#changes">Changes to Terms</a>
+                        <a href="#contact">Contact Us</a>
+                    </div>
+
+                    <!-- Mobile Navigation Dropdown -->
+                    <div class="lg:hidden mb-8">
+                        <select id="mobileNav" class="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            <option value="#introduction">Introduction</option>
+                            <option value="#account">Account Terms</option>
+                            <option value="#ordering">Ordering Process</option>
+                            <option value="#payments">Payments & Fees</option>
+                            <option value="#delivery">Delivery Terms</option>
+                            <option value="#cancellations">Cancellations</option>
+                            <option value="#conduct">User Conduct</option>
+                            <option value="#intellectual">Intellectual Property</option>
+                            <option value="#liability">Liability</option>
+                            <option value="#changes">Changes to Terms</option>
+                            <option value="#contact">Contact Us</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Key Points Card -->
+                    <div class="bg-white rounded-lg shadow-custom p-6 mb-6">
+                        <h3 class="text-lg font-bold mb-4 flex items-center">
+                            <i class="fas fa-key mr-2 text-primary"></i> Key Terms
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                                <span>Must be 18+ to place orders</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                                <span>Prices subject to change</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                                <span>Delivery in 30 min or free</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                                <span>Cancel within 5 min of ordering</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                                <span>Contact us for issues</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="lg:w-3/4">
+                    <div class="bg-white rounded-2xl shadow-custom overflow-hidden">
+                        <div class="p-6 md:p-8">
+                            <!-- Introduction -->
+                            <div id="introduction" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">1. Introduction</h2>
+                                <p class="mb-4">Welcome to FreshBite ("we," "our," or "us"). These Terms of Service ("Terms") govern your access to and use of the FreshBite website, mobile application, and services (collectively, the "Service").</p>
+                                <p class="mb-6">By accessing or using the Service, you agree to be bound by these Terms and our Privacy Policy. If you do not agree to these Terms, you may not use the Service.</p>
+                                
+                                <div class="highlight-box p-5 rounded-lg mb-6">
+                                    <p class="font-bold mb-2">Please note:</p>
+                                    <ul class="list-disc pl-5 space-y-2">
+                                        <li>You must be at least 18 years old to use our Service</li>
+                                        <li>These Terms constitute a binding legal agreement</li>
+                                        <li>We may modify these Terms at any time</li>
+                                        <li>Continued use constitutes acceptance of changes</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Account Terms -->
+                            <div id="account" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">2. Account Registration and Security</h2>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                    <div class="term-card p-5 rounded-lg">
+                                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                                            <i class="fas fa-user-circle text-primary text-xl"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">Account Creation</h3>
+                                        <p>To access certain features, you must create an account. You agree to provide accurate, current, and complete information during registration and to update such information.</p>
+                                    </div>
+                                    
+                                    <div class="term-card p-5 rounded-lg">
+                                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                                            <i class="fas fa-shield-alt text-primary text-xl"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">Account Security</h3>
+                                        <p>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. Notify us immediately of any unauthorized use.</p>
+                                    </div>
+                                </div>
+                                
+                                <h3 class="text-xl font-bold mb-4 mt-8">Account Termination</h3>
+                                <p class="mb-4">We reserve the right to suspend or terminate your account at our sole discretion, without notice, for conduct that we believe violates these Terms or is harmful to other users, us, or third parties.</p>
+                            </div>
+
+                            <!-- Ordering Process -->
+                            <div id="ordering" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">3. Ordering Process</h2>
+                                <p class="mb-6">Our Service allows you to place orders for food and beverages from participating restaurants ("Vendors").</p>
+                                
+                                <div class="overflow-x-auto mb-8">
+                                    <table class="min-w-full divide-y divide-light-gray">
+                                        <thead class="bg-light-gray">
+                                            <tr>
+                                                <th class="px-4 py-3 text-left">Step</th>
+                                                <th class="px-4 py-3 text-left">Description</th>
+                                                <th class="px-4 py-3 text-left">User Responsibility</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-light-gray">
+                                            <tr>
+                                                <td class="px-4 py-3 font-medium">1. Selection</td>
+                                                <td class="px-4 py-3">Choose items from Vendor menus</td>
+                                                <td class="px-4 py-3">Ensure selections match dietary needs</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-4 py-3 font-medium">2. Cart Review</td>
+                                                <td class="px-4 py-3">Review items, quantities, and prices</td>
+                                                <td class="px-4 py-3">Verify accuracy before checkout</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-4 py-3 font-medium">3. Checkout</td>
+                                                <td class="px-4 py-3">Provide delivery info and payment</td>
+                                                <td class="px-4 py-3">Provide accurate delivery details</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-4 py-3 font-medium">4. Confirmation</td>
+                                                <td class="px-4 py-3">Receive order confirmation</td>
+                                                <td class="px-4 py-3">Monitor order status updates</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                                    <div class="flex">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-exclamation-circle text-yellow-500 text-xl"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-yellow-700"><strong>Important:</strong> Menu items, prices, and availability are subject to change without notice. We are not responsible for errors in menu descriptions or pricing.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Payments -->
+                            <div id="payments" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">4. Payments and Fees</h2>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                    <div class="term-card p-5 rounded-lg">
+                                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                                            <i class="fas fa-credit-card text-primary text-xl"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">Payment Methods</h3>
+                                        <p>We accept various payment methods including credit/debit cards, digital wallets, and cash on delivery where available. You authorize us to charge your selected payment method.</p>
+                                    </div>
+                                    
+                                    <div class="term-card p-5 rounded-lg">
+                                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                                            <i class="fas fa-tag text-primary text-xl"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">Fees</h3>
+                                        <p>Your order total includes item prices, applicable taxes, delivery fee, and service fee. All fees are displayed before checkout. Delivery fee varies by location and order size.</p>
+                                    </div>
+                                </div>
+                                
+                                <h3 class="text-xl font-bold mb-4">Pricing Accuracy</h3>
+                                <p class="mb-6">While we strive for accuracy, pricing errors may occur. We reserve the right to cancel orders resulting from pricing errors.</p>
+                                
+                                <h3 class="text-xl font-bold mb-4">Promotions</h3>
+                                <p>Promotional offers are subject to specific terms and expiration dates. Only one promotion can be applied per order unless otherwise specified.</p>
+                            </div>
+
+                            <!-- Delivery -->
+                            <div id="delivery" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">5. Delivery Terms</h2>
+                                <p class="mb-6">We aim to deliver your order promptly and efficiently. Delivery times are estimates only and not guaranteed.</p>
+                                
+                                <div class="flex flex-col md:flex-row gap-6 mb-8">
+                                    <div class="flex-1">
+                                        <div class="flex items-start mb-4">
+                                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                                <i class="fas fa-clock text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-bold mb-1">Delivery Time Guarantee</h3>
+                                                <p>We guarantee delivery within 30 minutes for eligible areas. If we're late, you'll receive a credit for your next order.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex-1">
+                                        <div class="flex items-start mb-4">
+                                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                                <i class="fas fa-map-marker-alt text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-bold mb-1">Delivery Areas</h3>
+                                                <p>Delivery is available within designated service areas. You must provide a complete and accurate delivery address.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h3 class="text-xl font-bold mb-4">Receiving Orders</h3>
+                                <p class="mb-4">You must be present to receive your order. If you're unavailable, we may leave the order at your door at our discretion.</p>
+                                
+                                <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
+                                    <div class="flex">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-info-circle text-blue-500 text-xl"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-blue-700"><strong>Note:</strong> We are not responsible for orders that are stolen or damaged after delivery if left unattended per your instructions.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cancellations -->
+                            <div id="cancellations" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">6. Cancellations, Returns and Refunds</h2>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                                    <div class="term-card p-5 rounded-lg">
+                                        <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                                            <i class="fas fa-ban text-primary"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">Order Cancellation</h3>
+                                        <p>You may cancel your order within 5 minutes of placement without penalty. After 5 minutes, cancellation may not be possible if preparation has begun.</p>
+                                    </div>
+                                    
+                                    <div class="term-card p-5 rounded-lg">
+                                        <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                                            <i class="fas fa-undo text-primary"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">Incorrect Orders</h3>
+                                        <p>If your order is incorrect, contact us within 30 minutes of delivery. We'll work to resolve the issue, which may include refund or replacement.</p>
+                                    </div>
+                                    
+                                    <div class="term-card p-5 rounded-lg">
+                                        <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                                            <i class="fas fa-money-bill-wave text-primary"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">Refunds</h3>
+                                        <p>Refunds are issued at our discretion based on the circumstances. Approved refunds will be credited to your original payment method within 7-10 business days.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- User Conduct -->
+                            <div id="conduct" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">7. User Conduct</h2>
+                                <p class="mb-6">You agree not to engage in any of the following prohibited activities:</p>
+                                
+                                <div class="border border-light-gray rounded-lg p-5 mb-6">
+                                    <ul class="list-disc pl-5 space-y-3">
+                                        <li>Impersonating any person or entity</li>
+                                        <li>Harassing, threatening, or intimidating our drivers or staff</li>
+                                        <li>Using the Service for any illegal purpose</li>
+                                        <li>Interfering with or disrupting the Service</li>
+                                        <li>Attempting to circumvent payment obligations</li>
+                                        <li>Placing fraudulent orders</li>
+                                        <li>Violating any applicable laws or regulations</li>
+                                    </ul>
+                                </div>
+                                
+                                <p>We reserve the right to refuse service to anyone for any reason at any time. Violation of these conduct rules may result in termination of your access to the Service.</p>
+                            </div>
+
+                            <!-- Intellectual Property -->
+                            <div id="intellectual" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">8. Intellectual Property</h2>
+                                <p class="mb-4">All content included on the Service, such as text, graphics, logos, images, and software, is the property of FreshBite or its content suppliers and protected by intellectual property laws.</p>
+                                
+                                <div class="flex flex-col md:flex-row gap-6 mb-6">
+                                    <div class="flex-1">
+                                        <div class="flex items-start mb-4">
+                                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                                <i class="fas fa-copyright text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-bold mb-1">Service Content</h3>
+                                                <p>You may not reproduce, distribute, modify, or create derivative works of any content without our express written permission.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex-1">
+                                        <div class="flex items-start mb-4">
+                                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                                <i class="fas fa-comment text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-bold mb-1">User Content</h3>
+                                                <p>By submitting reviews, comments or other content, you grant us a non-exclusive, royalty-free license to use, reproduce, and display such content.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Liability -->
+                            <div id="liability" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">9. Disclaimers and Limitations of Liability</h2>
+                                
+                                <div class="term-card p-5 rounded-lg mb-6">
+                                    <div class="flex items-start">
+                                        <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                            <i class="fas fa-exclamation-triangle text-primary"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-bold mb-2">Service "As Is"</h3>
+                                            <p>The Service is provided "as is" without any warranties, express or implied. We do not warrant that the Service will be uninterrupted or error-free.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h3 class="text-xl font-bold mb-4">Limitation of Liability</h3>
+                                <p class="mb-4">To the maximum extent permitted by law, FreshBite shall not be liable for any indirect, incidental, special, consequential or punitive damages arising from your use of the Service.</p>
+                                
+                                <h3 class="text-xl font-bold mb-4">Vendor Responsibility</h3>
+                                <p class="mb-6">FreshBite acts as an intermediary between you and Vendors. We are not responsible for the quality, safety, or legality of food provided by Vendors.</p>
+                                
+                                <div class="bg-red-50 border-l-4 border-red-400 p-4">
+                                    <div class="flex">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-exclamation-triangle text-red-500 text-xl"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-red-700"><strong>Important:</strong> Some jurisdictions do not allow the exclusion or limitation of liability for consequential or incidental damages, so the above limitation may not apply to you.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Changes -->
+                            <div id="changes" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">10. Changes to Terms</h2>
+                                <p class="mb-4">We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect.</p>
+                                <p class="mb-6">What constitutes a material change will be determined at our sole discretion. By continuing to access or use our Service after revisions become effective, you agree to be bound by the revised terms.</p>
+                                
+                                <div class="bg-green-50 border-l-4 border-green-400 p-4">
+                                    <div class="flex">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-bell text-green-500 text-xl"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-green-700">We encourage you to review these Terms periodically for any changes. Changes to these Terms are effective when they are posted on this page.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Contact -->
+                            <div id="contact" class="section-content">
+                                <h2 class="text-2xl font-bold mb-6">11. Contact Us</h2>
+                                <p class="mb-6">If you have any questions about these Terms, please contact us:</p>
+                                
+                                <div class="bg-white border border-light-gray rounded-lg p-6">
+                                    <div class="flex flex-col md:flex-row gap-6">
+                                        <div class="md:w-1/2">
+                                            <h3 class="font-bold mb-4">General Inquiries</h3>
+                                            <a href="mailto:support@freshbite.com" class="text-primary font-bold hover:underline block mb-4">support@freshbite.com</a>
+                                            <p>Phone: +1 (555) 123-4567</p>
+                                            
+                                            <h3 class="font-bold mt-6 mb-4">Legal Department</h3>
+                                            <a href="mailto:legal@freshbite.com" class="text-primary font-bold hover:underline block">legal@freshbite.com</a>
+                                        </div>
+                                        
+                                        <div class="md:w-1/2">
+                                            <h3 class="font-bold mb-4">Mailing Address</h3>
+                                            <address class="not-italic mb-6">
+                                                FreshBite, Inc.<br>
+                                                Attn: Legal Department<br>
+                                                123 Food Street<br>
+                                                New York, NY 10001<br>
+                                                United States
+                                            </address>
+                                            
+                                            <h3 class="font-bold mb-4">Office Hours</h3>
+                                            <p>Monday-Friday: 9:00 AM - 6:00 PM EST</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <p class="mt-6">We will make good faith efforts to resolve any concerns or disputes regarding these Terms.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h4 class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block">FreshBite</h4>
+                    <p class="text-gray-300 mb-6">Delivering delicious meals with speed and quality since 2020. Your satisfaction is our priority.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Services</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Menu</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Refund Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Delivery Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Cookie Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block">Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-300">123 Food Street, New York</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-300">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-300">support@freshbite.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clock text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-300">Mon-Sun: 10:00 AM - 11:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 text-center text-gray-400">
+                <p>&copy; 2023 FreshBite. All rights reserved. Designed with ❤️ for food lovers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('open');
+            
+            // Change icon
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Mobile navigation
+        document.getElementById('mobileNav').addEventListener('change', function() {
+            const target = this.value;
+            document.querySelector(target).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+        
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section-content');
+            const navLinks = document.querySelectorAll('.tos-nav a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Print button functionality
+        document.getElementById('printButton').addEventListener('click', function() {
+            window.print();
+        });
+    </script>
+</body>
+</html>

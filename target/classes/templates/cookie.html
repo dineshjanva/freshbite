@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshBite | Cookie Policy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A082',
+                        'primary-dark': '#008a6e',
+                        secondary: '#FF6B00',
+                        dark: '#1e3932',
+                        light: '#f9f9f9',
+                        gray: '#5e5e5e',
+                        'light-gray': '#eaeaea',
+                    },
+                    boxShadow: {
+                        'custom': '0 4px 12px rgba(0, 0, 0, 0.08)',
+                        'custom-lg': '0 10px 25px rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        .cookie-card {
+            transition: all 0.3s ease;
+            border: 1px solid #eaeaea;
+        }
+        
+        .cookie-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        
+        .policy-nav {
+            position: sticky;
+            top: 120px;
+        }
+        
+        .policy-nav a {
+            display: block;
+            padding: 10px 15px;
+            border-left: 3px solid #eaeaea;
+            transition: all 0.3s ease;
+        }
+        
+        .policy-nav a:hover, .policy-nav a.active {
+            border-left: 3px solid #00A082;
+            background-color: rgba(0, 160, 130, 0.05);
+            color: #00A082;
+        }
+        
+        .mobile-menu {
+            transition: all 0.4s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        .cookie-type {
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .cookie-type:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 12px;
+            height: 12px;
+            background-color: #00A082;
+            border-radius: 50%;
+        }
+        
+        .cookie-table th, .cookie-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .cookie-table thead {
+            background-color: rgba(0, 160, 130, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Responsive Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <i class="fas fa-utensils text-secondary text-2xl mr-2"></i>
+                    <span class="text-primary text-2xl font-bold">FreshBite</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition">Home</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition">Menu</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition">Offers</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition">About</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- Desktop Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="px-4 py-2 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition flex items-center">
+                        <i class="fas fa-user mr-2"></i> Sign In
+                    </a>
+                    <a href="#" class="px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition flex items-center relative">
+                        <i class="fas fa-shopping-cart mr-2"></i> 
+                        <span class="hidden sm:inline">Cart</span>
+                        <span class="absolute -top-2 -right-2 bg-secondary rounded-full w-6 h-6 flex items-center justify-center text-xs">3</span>
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="md:hidden text-gray-600 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="mobile-menu md:hidden bg-white">
+                <ul class="py-4 space-y-4 border-t">
+                    <li><a href="#" class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary">Home</a></li>
+                    <li><a href="#" class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary">Menu</a></li>
+                    <li><a href="#" class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary">Offers</a></li>
+                    <li><a href="#" class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary">About</a></li>
+                    <li><a href="#" class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary">Contact</a></li>
+                    <li class="flex space-x-4 px-4 pt-4">
+                        <a href="#" class="flex-1 text-center py-2 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition">
+                            Sign In
+                        </a>
+                        <a href="#" class="flex-1 text-center py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition relative">
+                            Cart
+                            <span class="absolute -top-2 -right-2 bg-secondary rounded-full w-6 h-6 flex items-center justify-center text-xs">3</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="py-12 md:py-16 bg-gradient-to-r from-primary to-primary-dark text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-6">Cookie Policy</h1>
+                <p class="text-xl mb-8">How we use cookies to enhance your experience on FreshBite</p>
+                <p class="opacity-90">Last updated: August 15, 2023</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cookie Policy Content -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Navigation Sidebar -->
+                <div class="lg:w-1/4">
+                    <div class="policy-nav bg-white rounded-lg shadow-custom p-6 hidden lg:block">
+                        <h3 class="text-lg font-bold mb-4">Policy Sections</h3>
+                        <a href="#introduction" class="active">Introduction</a>
+                        <a href="#types">Types of Cookies</a>
+                        <a href="#purpose">Purpose of Cookies</a>
+                        <a href="#duration">Cookie Duration</a>
+                        <a href="#manage">Managing Cookies</a>
+                        <a href="#changes">Policy Changes</a>
+                        <a href="#contact">Contact Us</a>
+                    </div>
+
+                    <!-- Mobile Navigation Dropdown -->
+                    <div class="lg:hidden mb-8">
+                        <select id="mobileNav" class="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            <option value="#introduction">Introduction</option>
+                            <option value="#types">Types of Cookies</option>
+                            <option value="#purpose">Purpose of Cookies</option>
+                            <option value="#duration">Cookie Duration</option>
+                            <option value="#manage">Managing Cookies</option>
+                            <option value="#changes">Policy Changes</option>
+                            <option value="#contact">Contact Us</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Cookie Consent Card -->
+                    <!-- <div class="bg-white rounded-lg shadow-custom p-6">
+                        <h3 class="text-lg font-bold mb-4 flex items-center">
+                            <i class="fas fa-cookie-bite text-primary mr-2"></i> Your Preferences
+                        </h3>
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-2">
+                                <span>Essential Cookies</span>
+                                <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Always On</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-4">Required for site functionality</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-2">
+                                <span>Analytics Cookies</span>
+                                <div class="relative inline-block w-12 h-6">
+                                    <input type="checkbox" class="sr-only" id="analytics-toggle" checked>
+                                    <div class="block bg-gray-300 w-12 h-6 rounded-full"></div>
+                                    <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition transform translate-x-6"></div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-4">Help us improve our services</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-2">
+                                <span>Marketing Cookies</span>
+                                <div class="relative inline-block w-12 h-6">
+                                    <input type="checkbox" class="sr-only" id="marketing-toggle">
+                                    <div class="block bg-gray-300 w-12 h-6 rounded-full"></div>
+                                    <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition"></div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-600">Personalize your experience</p>
+                        </div>
+                        
+                        <button class="w-full mt-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition">
+                            Save Preferences
+                        </button>
+                    </div> -->
+                </div>
+
+                <!-- Main Content -->
+                <div class="lg:w-3/4">
+                    <div class="bg-white rounded-2xl shadow-custom overflow-hidden">
+                        <div class="p-6 md:p-8">
+                            <!-- Introduction -->
+                            <div id="introduction" class="mb-12">
+                                <h2 class="text-2xl font-bold mb-6">1. Introduction</h2>
+                                <p class="mb-4">Welcome to FreshBite's Cookie Policy. This policy explains how we use cookies and similar technologies on our website and mobile application (collectively, the "Service").</p>
+                                <p class="mb-6">By using our Service, you consent to the use of cookies in accordance with this policy. You can manage your cookie preferences at any time using the tools provided.</p>
+                                
+                                <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg mb-6">
+                                    <div class="flex">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-info-circle text-blue-500 text-xl"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-blue-700"><strong>What are cookies?</strong> Cookies are small text files stored on your device when you visit websites. They help websites remember information about your visit.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Types of Cookies -->
+                            <div id="types" class="mb-12">
+                                <h2 class="text-2xl font-bold mb-6">2. Types of Cookies We Use</h2>
+                                <p class="mb-6">We use several types of cookies on our Service, each serving different purposes:</p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                    <div class="cookie-card p-5 rounded-lg">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mr-3">
+                                                <i class="fas fa-exclamation-circle text-red-500"></i>
+                                            </div>
+                                            <h3 class="font-bold">Essential Cookies</h3>
+                                        </div>
+                                        <p>These cookies are necessary for the website to function and cannot be switched off. They are usually set in response to actions made by you, such as setting your privacy preferences or filling out forms.</p>
+                                    </div>
+                                    
+                                    <div class="cookie-card p-5 rounded-lg">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                                <i class="fas fa-chart-line text-blue-500"></i>
+                                            </div>
+                                            <h3 class="font-bold">Performance Cookies</h3>
+                                        </div>
+                                        <p>These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us know which pages are popular and how visitors move around the site.</p>
+                                    </div>
+                                    
+                                    <div class="cookie-card p-5 rounded-lg">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mr-3">
+                                                <i class="fas fa-user-cog text-yellow-500"></i>
+                                            </div>
+                                            <h3 class="font-bold">Functional Cookies</h3>
+                                        </div>
+                                        <p>These cookies enable the website to provide enhanced functionality and personalization. They may be set by us or by third-party providers whose services we have added to our pages.</p>
+                                    </div>
+                                    
+                                    <div class="cookie-card p-5 rounded-lg">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                                                <i class="fas fa-ad text-purple-500"></i>
+                                            </div>
+                                            <h3 class="font-bold">Targeting Cookies</h3>
+                                        </div>
+                                        <p>These cookies may be set through our site by our advertising partners. They may be used to build a profile of your interests and show you relevant ads on other sites.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Purpose of Cookies -->
+                            <div id="purpose" class="mb-12">
+                                <h2 class="text-2xl font-bold mb-6">3. Purpose of Cookies</h2>
+                                <p class="mb-6">We use cookies for several important purposes on our Service:</p>
+                                
+                                <div class="overflow-x-auto mb-8">
+                                    <table class="cookie-table min-w-full">
+                                        <thead>
+                                            <tr>
+                                                <th>Purpose</th>
+                                                <th>Description</th>
+                                                <th>Examples</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="font-medium">Authentication</td>
+                                                <td>To identify you when you log in and navigate our site</td>
+                                                <td>Session cookies, login tokens</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font-medium">Preferences</td>
+                                                <td>To remember your preferences and settings</td>
+                                                <td>Language selection, dietary preferences</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font-medium">Security</td>
+                                                <td>To protect your account and our services</td>
+                                                <td>CSRF tokens, security validations</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font-medium">Analytics</td>
+                                                <td>To understand how our services are used</td>
+                                                <td>Google Analytics, Mixpanel</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font-medium">Advertising</td>
+                                                <td>To deliver relevant advertisements</td>
+                                                <td>Facebook Pixel, Google Ads</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font-medium">Performance</td>
+                                                <td>To optimize site performance</td>
+                                                <td>Load balancing, caching cookies</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg">
+                                    <div class="flex">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-lightbulb text-green-500 text-xl"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-green-700"><strong>Cookie Benefits:</strong> Cookies help us provide you with a better experience by remembering your preferences, enabling features, and helping us understand how to improve our services.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cookie Duration -->
+                            <div id="duration" class="mb-12">
+                                <h2 class="text-2xl font-bold mb-6">4. Cookie Duration</h2>
+                                <p class="mb-6">Cookies have different lifespans depending on their purpose:</p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                                    <div class="border border-light-gray rounded-lg p-5 text-center">
+                                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i class="fas fa-hourglass-start text-primary text-2xl"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">Session Cookies</h3>
+                                        <p class="text-gray-600">These temporary cookies are erased when you close your browser. They allow us to link your actions during a browser session.</p>
+                                        <div class="mt-4 text-primary font-bold">Duration: Browser Session</div>
+                                    </div>
+                                    
+                                    <div class="border border-light-gray rounded-lg p-5 text-center">
+                                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i class="fas fa-clock text-primary text-2xl"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">Persistent Cookies</h3>
+                                        <p class="text-gray-600">These remain on your device between browsing sessions. They remember your preferences or actions across our site.</p>
+                                        <div class="mt-4 text-primary font-bold">Duration: 30 days to 2 years</div>
+                                    </div>
+                                    
+                                    <div class="border border-light-gray rounded-lg p-5 text-center">
+                                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i class="fas fa-calendar-alt text-primary text-2xl"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">First vs Third-Party</h3>
+                                        <p class="text-gray-600">First-party cookies are set by our domain. Third-party cookies are set by domains other than ours, typically for advertising or analytics.</p>
+                                        <div class="mt-4 text-primary font-bold">Duration: Varies by provider</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Managing Cookies -->
+                            <div id="manage" class="mb-12">
+                                <h2 class="text-2xl font-bold mb-6">5. Managing Your Cookie Preferences</h2>
+                                <p class="mb-6">You have several options to manage cookies on our Service:</p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                    <div class="p-5 border border-light-gray rounded-lg">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                                <i class="fas fa-sliders-h text-primary"></i>
+                                            </div>
+                                            <h3 class="font-bold">Browser Settings</h3>
+                                        </div>
+                                        <p class="mb-4">Most browsers allow you to manage cookie preferences through their settings. You can usually find these settings in the "Options" or "Preferences" menu.</p>
+                                        <div class="text-sm">
+                                            <p><strong>Chrome:</strong> Settings → Privacy and security → Cookies and other site data</p>
+                                            <p><strong>Firefox:</strong> Options → Privacy & Security → Cookies and Site Data</p>
+                                            <p><strong>Safari:</strong> Preferences → Privacy → Manage Website Data</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="p-5 border border-light-gray rounded-lg">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                                <i class="fas fa-cookie text-primary"></i>
+                                            </div>
+                                            <h3 class="font-bold">Cookie Consent Tool</h3>
+                                        </div>
+                                        <p class="mb-4">Use our cookie preference center (available in the footer of every page) to manage your preferences for non-essential cookies.</p>
+                                        <p class="mb-4">You can update your preferences at any time by clicking the "Cookie Preferences" link.</p>
+                                        <a href="#" class="inline-block px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition">Update Cookie Preferences</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg">
+                                    <div class="flex">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-exclamation-triangle text-yellow-500 text-xl"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-yellow-700"><strong>Note:</strong> Blocking certain types of cookies may impact your experience of our website and the services we are able to offer. Essential cookies cannot be disabled as they are necessary for basic functionality.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Changes -->
+                            <div id="changes" class="mb-12">
+                                <h2 class="text-2xl font-bold mb-6">6. Changes to This Policy</h2>
+                                <p class="mb-4">We may update this Cookie Policy from time to time to reflect changes in technology, legislation, or our data use practices.</p>
+                                <p class="mb-6">When we make significant changes, we will notify you through our Service or by email (if you have an account with us). The "Last updated" date at the top of this policy indicates when it was last revised.</p>
+                                
+                                <div class="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-lg">
+                                    <div class="flex">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-bell text-purple-500 text-xl"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-purple-700">We recommend reviewing this Cookie Policy periodically to stay informed about how we use cookies and similar technologies.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Contact -->
+                            <div id="contact">
+                                <h2 class="text-2xl font-bold mb-6">7. Contact Us</h2>
+                                <p class="mb-6">If you have any questions or concerns about our use of cookies, please contact us:</p>
+                                
+                                <div class="bg-white border border-light-gray rounded-lg p-6">
+                                    <div class="flex flex-col md:flex-row gap-6">
+                                        <div class="md:w-1/2">
+                                            <h3 class="font-bold mb-4">Email</h3>
+                                            <a href="mailto:privacy@freshbite.com" class="text-primary font-bold hover:underline block mb-6">privacy@freshbite.com</a>
+                                            
+                                            <h3 class="font-bold mb-4">Mailing Address</h3>
+                                            <address class="not-italic">
+                                                FreshBite Data Protection Officer<br>
+                                                123 Food Street<br>
+                                                New York, NY 10001<br>
+                                                United States
+                                            </address>
+                                        </div>
+                                        
+                                        <div class="md:w-1/2">
+                                            <h3 class="font-bold mb-4">Phone</h3>
+                                            <p class="mb-6">+1 (555) 123-4567</p>
+                                            
+                                            <h3 class="font-bold mb-4">Office Hours</h3>
+                                            <p>Monday-Friday: 9:00 AM - 6:00 PM EST</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <p class="mt-6">We aim to respond to all inquiries within 5 business days.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h4 class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block">FreshBite</h4>
+                    <p class="text-gray-300 mb-6">Delivering delicious meals with speed and quality since 2020. Your satisfaction is our priority.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Services</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Menu</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Refund Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Delivery Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block">Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-300">123 Food Street, New York</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-300">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-300">support@freshbite.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clock text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-300">Mon-Sun: 10:00 AM - 11:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 text-center text-gray-400">
+                <p>&copy; 2023 FreshBite. All rights reserved. Designed with ❤️ for food lovers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div class="fixed bottom-0 left-0 right-0 bg-dark text-white p-4 z-50">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-4 md:mb-0 md:mr-6">
+                    <h3 class="font-bold mb-2 flex items-center">
+                        <i class="fas fa-cookie-bite text-secondary mr-2"></i> We Value Your Privacy
+                    </h3>
+                    <p class="text-gray-300 text-sm">We use cookies to enhance your browsing experience and analyze our traffic. By clicking "Accept", you consent to our use of cookies.</p>
+                </div>
+                <div class="flex space-x-3">
+                    <button class="px-4 py-2 border border-white text-white rounded-lg hover:bg-white hover:text-dark transition">
+                        Preferences
+                    </button>
+                    <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition">
+                        Accept All
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('open');
+            
+            // Change icon
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Mobile navigation
+        document.getElementById('mobileNav').addEventListener('change', function() {
+            const target = this.value;
+            document.querySelector(target).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+        
+        // Toggle switches
+        document.querySelectorAll('.relative input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const dot = this.nextElementSibling.nextElementSibling;
+                if(this.checked) {
+                    dot.style.transform = 'translateX(24px)';
+                } else {
+                    dot.style.transform = 'translateX(0)';
+                }
+            });
+        });
+        
+        // Cookie table row hover effect
+        document.querySelectorAll('.cookie-table tbody tr').forEach(row => {
+            row.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = 'rgba(0, 160, 130, 0.05)';
+            });
+            row.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = '';
+            });
+        });
+    </script>
+</body>
+</html>

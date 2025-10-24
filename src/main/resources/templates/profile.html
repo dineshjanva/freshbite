@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FreshBite | My Profile</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+          theme: {
+              extend: {
+                  colors: {
+                      primary: '#00A082',
+                      'primary-dark': '#008a6e',
+                      secondary: '#FF6B00',
+                      dark: '#1e3932',
+                      light: '#f9f9f9',
+                      gray: '#5e5e5e',
+                      'light-gray': '#eaeaea',
+                  },
+                  boxShadow: {
+                      'custom': '0 4px 12px rgba(0, 0, 0, 0.08)',
+                      'custom-lg': '0 10px 25px rgba(0, 0, 0, 0.1)',
+                  }
+              }
+          }
+      }
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+      body {
+          font-family: 'Poppins', sans-serif;
+          background-color: #f9f9f9;
+      }
+
+      .profile-nav {
+          position: sticky;
+          top: 120px;
+      }
+
+      .profile-nav a {
+          display: flex;
+          align-items: center;
+          padding: 12px 20px;
+          border-radius: 8px;
+          margin-bottom: 8px;
+          transition: all 0.3s ease;
+      }
+
+      .profile-nav a:hover, .profile-nav a.active {
+          background-color: rgba(0, 160, 130, 0.1);
+          color: #00A082;
+      }
+
+      .profile-nav a i {
+          margin-right: 12px;
+          width: 20px;
+          text-align: center;
+      }
+
+      .order-card {
+          transition: all 0.3s ease;
+      }
+
+      .order-card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      }
+
+      .mobile-menu {
+          transition: all 0.4s ease;
+          max-height: 0;
+          overflow: hidden;
+      }
+
+      .mobile-menu.open {
+          max-height: 500px;
+      }
+
+      .address-card:hover {
+          border-color: #00A082;
+      }
+
+      .tab-content {
+          display: none;
+      }
+
+      .tab-content.active {
+          display: block;
+          animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <!-- Responsive Header -->
+    <span th:replace="~{layouts/webnavbar :: webnav}"></span>
+
+    <!-- Profile Header -->
+    <section class="py-8 md:py-12 bg-gradient-to-r from-primary/10 to-primary-dark/10">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="mb-6 md:mb-0 md:mr-6">
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80"
+                alt="John Doe"
+                class="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg" />
+              <button
+                class="absolute bottom-2 right-2 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary-dark transition">
+                <i class="fas fa-camera"></i>
+              </button>
+            </div>
+          </div>
+          <div class="text-center md:text-left">
+            <h1 class="text-3xl font-bold mb-2" th:text="${user.firstName}">John Doe</h1>
+            <p class="text-gray-600 mb-4">Premium Member since August 2022</p>
+            <div class="flex flex-wrap justify-center md:justify-start gap-2">
+              <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                <i class="fas fa-star mr-1"></i> 245 Points
+              </span>
+              <span
+                class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm font-medium">
+                <i class="fas fa-trophy mr-1"></i> Gold Member
+              </span>
+              <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                <i class="fas fa-check-circle mr-1"></i> Verified
+              </span>
+            </div>
+          </div>
+          <div class="mt-6 md:mt-0 md:ml-auto">
+            <button
+              class="px-6 py-3 bg-white border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition flex items-center">
+              <i class="fas fa-cog mr-2"></i> Account Settings
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile Content -->
+    <section class="py-8">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row gap-8">
+          <!-- Navigation Sidebar -->
+          <div class="lg:w-1/4">
+            <div class="profile-nav bg-white rounded-lg shadow-custom p-6">
+              <h3 class="text-lg font-bold mb-4">My Account</h3>
+              <a href="#profile" class="active" data-tab="profile">
+                <i class="fas fa-user"></i> Personal Profile
+              </a>
+              <a href="#orders" data-tab="orders">
+                <i class="fas fa-shopping-bag"></i> My Orders
+              </a>
+              <a href="#addresses" data-tab="addresses">
+                <i class="fas fa-map-marker-alt"></i> Saved Addresses
+              </a>
+              <a href="#payment" data-tab="payment">
+                <i class="fas fa-credit-card"></i> Payment Methods
+              </a>
+              <a href="#favorites" data-tab="favorites"> <i class="fas fa-heart"></i> Favorites </a>
+              <a href="#reviews" data-tab="reviews"> <i class="fas fa-star"></i> My Reviews </a>
+              <a href="#settings" data-tab="settings">
+                <i class="fas fa-cog"></i> Account Settings
+              </a>
+              <div class="border-t border-light-gray my-3"></div>
+              <a href="#" class="text-red-600 hover:bg-red-50">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </a>
+              <!-- Rewards Card -->
+              <div
+                class="mt-6 bg-gradient-to-r from-primary to-primary-dark text-white rounded-lg shadow-custom p-6">
+                <h3 class="text-xl font-bold mb-4 flex items-center">
+                  <i class="fas fa-gift mr-2"></i> FreshBite Rewards
+                </h3>
+                <div class="mb-4">
+                  <div class="flex justify-between mb-1">
+                    <span>Gold Level</span>
+                    <span>245/500 Points</span>
+                  </div>
+                  <div class="w-full bg-white/20 rounded-full h-2.5">
+                    <div class="bg-white h-2.5 rounded-full" style="width: 49%"></div>
+                  </div>
+                </div>
+                <p class="mb-4">Earn 1 point for every $1 spent. 500 points = $10 discount!</p>
+                <button
+                  class="w-full py-2 bg-white text-primary rounded-lg font-medium hover:bg-gray-100 transition">
+                  View Rewards
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Content -->
+          <div class="lg:w-3/4">
+            <!-- Profile Tab -->
+            <div id="profile" class="tab-content active">
+              <div class="bg-white rounded-2xl shadow-custom overflow-hidden">
+                <div class="p-6 md:p-8">
+                  <h2 class="text-2xl font-bold mb-6">Personal Information</h2>
+
+                  <form>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                      <div>
+                        <label class="block text-gray-700 mb-2">First Name</label>
+                        <input
+                          type="text"
+                          th:value="${user.firstName?:''}"
+                          class="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+                      </div>
+                      <div>
+                        <label class="block text-gray-700 mb-2">Last Name</label>
+                        <input
+                          type="text"
+                          th:value="${user.lastName?:''}"
+                          class="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+                      </div>
+                    </div>
+
+                    <div class="mb-6">
+                      <label class="block text-gray-700 mb-2">Email Address</label>
+                      <input
+                        type="email"
+                        placeholder="demo.doe@example.com"
+                        th:value="${user.email?:''}"
+                        class="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+                    </div>
+
+                    <div class="mb-6">
+                      <label class="block text-gray-700 mb-2">Phone Number</label>
+                      <input
+                        type="tel"
+                        placeholder="+1 (555) 123-4567"
+                        th:value="${user.phone?:''}"
+                        class="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+                    </div>
+
+                    <div class="mb-6">
+                      <label class="block text-gray-700 mb-2">Date of Birth</label>
+                      <!-- th:value="${user.dob}" -->
+                      <input
+                        type="date"
+                        placeholder="1990-01-15"
+                        class="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+                    </div>
+
+                    <div class="flex justify-end">
+                      <button
+                        type="button"
+                        class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium mr-4 hover:bg-gray-100 transition">
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        class="px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition">
+                        Save Changes
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Preferences -->
+              <div class="mt-8 bg-white rounded-2xl shadow-custom overflow-hidden">
+                <div class="p-6 md:p-8">
+                  <h2 class="text-2xl font-bold mb-6">Dietary Preferences</h2>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                    <label
+                      class="flex items-center p-3 border border-light-gray rounded-lg cursor-pointer hover:border-primary">
+                      <input
+                        type="checkbox"
+                        class="form-checkbox h-5 w-5 text-primary rounded"
+                        checked />
+                      <span class="ml-3">Vegetarian</span>
+                    </label>
+
+                    <label
+                      class="flex items-center p-3 border border-light-gray rounded-lg cursor-pointer hover:border-primary">
+                      <input type="checkbox" class="form-checkbox h-5 w-5 text-primary rounded" />
+                      <span class="ml-3">Vegan</span>
+                    </label>
+
+                    <label
+                      class="flex items-center p-3 border border-light-gray rounded-lg cursor-pointer hover:border-primary">
+                      <input type="checkbox" class="form-checkbox h-5 w-5 text-primary rounded" />
+                      <span class="ml-3">Gluten-Free</span>
+                    </label>
+
+                    <label
+                      class="flex items-center p-3 border border-light-gray rounded-lg cursor-pointer hover:border-primary">
+                      <input
+                        type="checkbox"
+                        class="form-checkbox h-5 w-5 text-primary rounded"
+                        checked />
+                      <span class="ml-3">Dairy-Free</span>
+                    </label>
+
+                    <label
+                      class="flex items-center p-3 border border-light-gray rounded-lg cursor-pointer hover:border-primary">
+                      <input type="checkbox" class="form-checkbox h-5 w-5 text-primary rounded" />
+                      <span class="ml-3">Nut-Free</span>
+                    </label>
+
+                    <label
+                      class="flex items-center p-3 border border-light-gray rounded-lg cursor-pointer hover:border-primary">
+                      <input type="checkbox" class="form-checkbox h-5 w-5 text-primary rounded" />
+                      <span class="ml-3">Halal</span>
+                    </label>
+                  </div>
+
+                  <button
+                    class="px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition">
+                    Save Preferences
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Orders Tab (Hidden by default) -->
+            <div id="orders" class="tab-content">
+              <div class="bg-white rounded-2xl shadow-custom overflow-hidden">
+                <div class="p-6 md:p-8">
+                  <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold">My Orders</h2>
+                    <div class="relative">
+                      <select
+                        class="px-4 py-2 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        <option>Last 30 days</option>
+                        <option>Last 3 months</option>
+                        <option>2023</option>
+                        <option>All Orders</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Order 1 -->
+                  <div class="order-card border border-light-gray rounded-lg p-5 mb-6">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                      <div>
+                        <h3 class="font-bold text-lg">Order #FB-789456</h3>
+                        <p class="text-gray-600">August 15, 2023 at 6:30 PM</p>
+                      </div>
+                      <div class="mt-2 md:mt-0">
+                        <span
+                          class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium"
+                          >Delivered</span
+                        >
+                      </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-6 mb-4">
+                      <div class="flex-1">
+                        <h4 class="font-bold mb-2">Items</h4>
+                        <ul class="space-y-2">
+                          <li class="flex justify-between">
+                            <span>Gourmet Burger x2</span>
+                            <span>$25.98</span>
+                          </li>
+                          <li class="flex justify-between">
+                            <span>French Fries</span>
+                            <span>$4.99</span>
+                          </li>
+                          <li class="flex justify-between">
+                            <span>Chocolate Shake</span>
+                            <span>$5.99</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="md:w-1/3">
+                        <h4 class="font-bold mb-2">Summary</h4>
+                        <div class="space-y-2">
+                          <div class="flex justify-between">
+                            <span>Subtotal</span>
+                            <span>$36.96</span>
+                          </div>
+                          <div class="flex justify-between">
+                            <span>Delivery</span>
+                            <span>$2.99</span>
+                          </div>
+                          <div class="flex justify-between">
+                            <span>Discount</span>
+                            <span class="text-green-600">-$5.00</span>
+                          </div>
+                          <div
+                            class="flex justify-between font-bold border-t border-light-gray pt-2">
+                            <span>Total</span>
+                            <span>$34.95</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row justify-between gap-3">
+                      <div>
+                        <p class="text-gray-600 mb-1">Delivered to: Home</p>
+                        <p class="text-gray-600">Payment: Visa ending in 1234</p>
+                      </div>
+                      <div class="flex gap-2">
+                        <button
+                          class="px-4 py-2 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition">
+                          Reorder
+                        </button>
+                        <button
+                          class="px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition">
+                          View Details
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Order 2 -->
+                  <div class="order-card border border-light-gray rounded-lg p-5 mb-6">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                      <div>
+                        <h3 class="font-bold text-lg">Order #FB-654321</h3>
+                        <p class="text-gray-600">August 10, 2023 at 1:15 PM</p>
+                      </div>
+                      <div class="mt-2 md:mt-0">
+                        <span
+                          class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+                          >Preparing</span
+                        >
+                      </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-6 mb-4">
+                      <div class="flex-1">
+                        <h4 class="font-bold mb-2">Items</h4>
+                        <ul class="space-y-2">
+                          <li class="flex justify-between">
+                            <span>Margherita Pizza</span>
+                            <span>$14.99</span>
+                          </li>
+                          <li class="flex justify-between">
+                            <span>Garlic Bread</span>
+                            <span>$5.99</span>
+                          </li>
+                          <li class="flex justify-between">
+                            <span>Caesar Salad</span>
+                            <span>$8.99</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="md:w-1/3">
+                        <h4 class="font-bold mb-2">Summary</h4>
+                        <div class="space-y-2">
+                          <div class="flex justify-between">
+                            <span>Subtotal</span>
+                            <span>$29.97</span>
+                          </div>
+                          <div class="flex justify-between">
+                            <span>Delivery</span>
+                            <span>$0.00</span>
+                          </div>
+                          <div class="flex justify-between">
+                            <span>Service Fee</span>
+                            <span>$1.99</span>
+                          </div>
+                          <div
+                            class="flex justify-between font-bold border-t border-light-gray pt-2">
+                            <span>Total</span>
+                            <span>$31.96</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row justify-between gap-3">
+                      <div>
+                        <p class="text-gray-600 mb-1">Delivering to: Office</p>
+                        <p class="text-gray-600">Payment: PayPal</p>
+                      </div>
+                      <div class="flex gap-2">
+                        <button
+                          class="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-100 transition">
+                          Track Order
+                        </button>
+                        <button
+                          class="px-4 py-2 border border-red-600 text-red-600 rounded-lg font-medium hover:bg-red-50 transition">
+                          Cancel Order
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Order 3 -->
+                  <div class="order-card border border-light-gray rounded-lg p-5">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                      <div>
+                        <h3 class="font-bold text-lg">Order #FB-321654</h3>
+                        <p class="text-gray-600">August 5, 2023 at 7:45 PM</p>
+                      </div>
+                      <div class="mt-2 md:mt-0">
+                        <span
+                          class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium"
+                          >Completed</span
+                        >
+                      </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-6 mb-4">
+                      <div class="flex-1">
+                        <h4 class="font-bold mb-2">Items</h4>
+                        <ul class="space-y-2">
+                          <li class="flex justify-between">
+                            <span>Sushi Platter</span>
+                            <span>$18.99</span>
+                          </li>
+                          <li class="flex justify-between">
+                            <span>Miso Soup</span>
+                            <span>$3.99</span>
+                          </li>
+                          <li class="flex justify-between">
+                            <span>Green Tea</span>
+                            <span>$2.99</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="md:w-1/3">
+                        <h4 class="font-bold mb-2">Summary</h4>
+                        <div class="space-y-2">
+                          <div class="flex justify-between">
+                            <span>Subtotal</span>
+                            <span>$25.97</span>
+                          </div>
+                          <div class="flex justify-between">
+                            <span>Delivery</span>
+                            <span>$2.99</span>
+                          </div>
+                          <div class="flex justify-between">
+                            <span>Discount</span>
+                            <span class="text-green-600">-$3.00</span>
+                          </div>
+                          <div
+                            class="flex justify-between font-bold border-t border-light-gray pt-2">
+                            <span>Total</span>
+                            <span>$25.96</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row justify-between gap-3">
+                      <div>
+                        <p class="text-gray-600 mb-1">Delivered to: Home</p>
+                        <p class="text-gray-600">Payment: Mastercard ending in 5678</p>
+                      </div>
+                      <div class="flex gap-2">
+                        <button
+                          class="px-4 py-2 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition">
+                          Reorder
+                        </button>
+                        <button
+                          class="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-100 transition">
+                          Leave Review
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Pagination -->
+                  <div class="mt-8 flex justify-center">
+                    <nav class="flex items-center gap-1">
+                      <a
+                        href="#"
+                        class="px-3 py-2 border border-light-gray text-gray-700 rounded-lg font-medium hover:bg-light-gray"
+                        >&laquo;</a
+                      >
+                      <a href="#" class="px-3 py-2 bg-primary text-white rounded-lg font-medium"
+                        >1</a
+                      >
+                      <a
+                        href="#"
+                        class="px-3 py-2 border border-light-gray text-gray-700 rounded-lg font-medium hover:bg-light-gray"
+                        >2</a
+                      >
+                      <a
+                        href="#"
+                        class="px-3 py-2 border border-light-gray text-gray-700 rounded-lg font-medium hover:bg-light-gray"
+                        >3</a
+                      >
+                      <a
+                        href="#"
+                        class="px-3 py-2 border border-light-gray text-gray-700 rounded-lg font-medium hover:bg-light-gray"
+                        >&raquo;</a
+                      >
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Addresses Tab (Hidden by default) -->
+            <div id="addresses" class="tab-content">
+              <div class="bg-white rounded-2xl shadow-custom overflow-hidden">
+                <div class="p-6 md:p-8">
+                  <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold">Saved Addresses</h2>
+                    <button
+                      class="px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition flex items-center">
+                      <i class="fas fa-plus mr-2"></i> Add New Address
+                    </button>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Home Address -->
+                    <div class="address-card border-2 border-primary rounded-lg p-5 relative">
+                      <div class="absolute top-4 right-4 flex gap-2">
+                        <button
+                          class="w-8 h-8 bg-light-gray rounded-full flex items-center justify-center hover:bg-gray-200">
+                          <i class="fas fa-edit text-gray-600"></i>
+                        </button>
+                        <button
+                          class="w-8 h-8 bg-light-gray rounded-full flex items-center justify-center hover:bg-red-100 hover:text-red-600">
+                          <i class="fas fa-trash text-gray-600"></i>
+                        </button>
+                      </div>
+                      <div class="flex items-start mb-4">
+                        <div
+                          class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                          <i class="fas fa-home text-primary"></i>
+                        </div>
+                        <div>
+                          <h3 class="font-bold text-lg">Home</h3>
+                          <p class="text-gray-600">Primary Address</p>
+                        </div>
+                      </div>
+                      <address class="not-italic text-gray-700">
+                        123 Main Street<br />
+                        Apartment 4B<br />
+                        New York, NY 10001<br />
+                        United States
+                      </address>
+                      <p class="mt-3">
+                        <i class="fas fa-phone text-gray-500 mr-2"></i> +1 (555) 123-4567
+                      </p>
+                      <div class="mt-4">
+                        <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs"
+                          >Default Delivery</span
+                        >
+                      </div>
+                    </div>
+
+                    <!-- Office Address -->
+                    <div
+                      class="address-card border border-light-gray rounded-lg p-5 relative hover:shadow-custom transition">
+                      <div class="absolute top-4 right-4 flex gap-2">
+                        <button
+                          class="w-8 h-8 bg-light-gray rounded-full flex items-center justify-center hover:bg-gray-200">
+                          <i class="fas fa-edit text-gray-600"></i>
+                        </button>
+                        <button
+                          class="w-8 h-8 bg-light-gray rounded-full flex items-center justify-center hover:bg-red-100 hover:text-red-600">
+                          <i class="fas fa-trash text-gray-600"></i>
+                        </button>
+                      </div>
+                      <div class="flex items-start mb-4">
+                        <div
+                          class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                          <i class="fas fa-building text-blue-600"></i>
+                        </div>
+                        <div>
+                          <h3 class="font-bold text-lg">Office</h3>
+                          <p class="text-gray-600">Delivery before 5 PM</p>
+                        </div>
+                      </div>
+                      <address class="not-italic text-gray-700">
+                        456 Business Avenue<br />
+                        Floor 12, Suite 1204<br />
+                        New York, NY 10005<br />
+                        United States
+                      </address>
+                      <p class="mt-3">
+                        <i class="fas fa-phone text-gray-500 mr-2"></i> +1 (555) 987-6543
+                      </p>
+                      <button
+                        class="mt-4 px-4 py-2 bg-white border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition">
+                        Set as Default
+                      </button>
+                    </div>
+
+                    <!-- Parent's Address -->
+                    <div
+                      class="address-card border border-light-gray rounded-lg p-5 relative hover:shadow-custom transition">
+                      <div class="absolute top-4 right-4 flex gap-2">
+                        <button
+                          class="w-8 h-8 bg-light-gray rounded-full flex items-center justify-center hover:bg-gray-200">
+                          <i class="fas fa-edit text-gray-600"></i>
+                        </button>
+                        <button
+                          class="w-8 h-8 bg-light-gray rounded-full flex items-center justify-center hover:bg-red-100 hover:text-red-600">
+                          <i class="fas fa-trash text-gray-600"></i>
+                        </button>
+                      </div>
+                      <div class="flex items-start mb-4">
+                        <div
+                          class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                          <i class="fas fa-user-friends text-orange-600"></i>
+                        </div>
+                        <div>
+                          <h3 class="font-bold text-lg">Parent's House</h3>
+                          <p class="text-gray-600">Weekend deliveries</p>
+                        </div>
+                      </div>
+                      <address class="not-italic text-gray-700">
+                        789 Oak Street<br />
+                        Brooklyn, NY 11201<br />
+                        United States
+                      </address>
+                      <p class="mt-3">
+                        <i class="fas fa-phone text-gray-500 mr-2"></i> +1 (555) 456-7890
+                      </p>
+                      <button
+                        class="mt-4 px-4 py-2 bg-white border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition">
+                        Set as Default
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <span th:replace="~{layouts/webfooter :: webfoot}"></span>
+
+    <!-- Floating Action Button (Mobile) -->
+    <div class="fixed bottom-6 right-6 md:hidden">
+      <a
+        href="#"
+        class="w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-lg hover:bg-primary-dark transition">
+        <i class="fas fa-utensils text-white text-xl"></i>
+      </a>
+    </div>
+
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobileMenuButton').addEventListener('click', function() {
+          const mobileMenu = document.getElementById('mobileMenu');
+          mobileMenu.classList.toggle('open');
+
+          // Change icon
+          const icon = this.querySelector('i');
+          if (icon.classList.contains('fa-bars')) {
+              icon.classList.remove('fa-bars');
+              icon.classList.add('fa-times');
+          } else {
+              icon.classList.remove('fa-times');
+              icon.classList.add('fa-bars');
+          }
+      });
+
+      // Tab switching functionality
+      document.querySelectorAll('.profile-nav a').forEach(tab => {
+          tab.addEventListener('click', function(e) {
+              e.preventDefault();
+
+              // Remove active class from all tabs
+              document.querySelectorAll('.profile-nav a').forEach(t => {
+                  t.classList.remove('active');
+              });
+
+              // Add active class to clicked tab
+              this.classList.add('active');
+
+              // Hide all tab contents
+              document.querySelectorAll('.tab-content').forEach(content => {
+                  content.classList.remove('active');
+              });
+
+              // Show selected tab content
+              const tabId = this.getAttribute('data-tab');
+              document.getElementById(tabId).classList.add('active');
+          });
+      });
+
+      // Initialize address card interactions
+      document.querySelectorAll('.address-card').forEach(card => {
+          card.addEventListener('click', function(e) {
+              if (!e.target.closest('button')) {
+                  this.classList.toggle('border-primary');
+              }
+          });
+      });
+    </script>
+  </body>
+</html>

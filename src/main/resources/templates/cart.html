@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FreshBite | Your Cart</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#00A082",
+              "primary-dark": "#008a6e",
+              secondary: "#FF6B00",
+              dark: "#1e3932",
+              light: "#f9f9f9",
+              gray: "#5e5e5e",
+              "light-gray": "#eaeaea",
+            },
+            boxShadow: {
+              custom: "0 4px 12px rgba(0, 0, 0, 0.08)",
+              "custom-lg": "0 10px 25px rgba(0, 0, 0, 0.1)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f9f9f9;
+      }
+
+      .cart-item {
+        transition: all 0.3s ease;
+      }
+
+      .cart-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .quantity-btn {
+        transition: all 0.2s ease;
+      }
+
+      .quantity-btn:hover {
+        background-color: #00a082;
+        color: white;
+      }
+
+      .mobile-menu {
+        transition: all 0.4s ease;
+        max-height: 0;
+        overflow: hidden;
+      }
+
+      .mobile-menu.open {
+        max-height: 500px;
+      }
+
+      .empty-cart {
+        background: linear-gradient(to bottom right, #f0fdf4, #ecfeff);
+      }
+    </style>
+  </head>
+  <body class="bg-light text-dark">
+    <!-- Responsive Header -->
+    <span th:replace="~{layouts/webnavbar ::webnav}"></span>
+
+    <!-- Cart Section -->
+    <section class="py-8 md:py-16">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center mb-8">
+          <h1 class="text-3xl md:text-4xl font-bold">Your Cart</h1>
+          <a
+            href="#"
+            class="text-primary font-medium hover:text-primary-dark transition flex items-center">
+            <i class="fas fa-arrow-left mr-2"></i> Continue Shopping
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Cart Items -->
+          <div class="lg:col-span-2">
+            <!-- Cart Items Container -->
+            <div class="bg-white rounded-2xl shadow-custom overflow-hidden">
+              <!-- Cart Header -->
+              <div class="hidden md:grid grid-cols-12 gap-4 bg-light-gray p-4 font-medium">
+                <div class="col-span-5">Item</div>
+                <div class="col-span-2 text-center">Price</div>
+                <div class="col-span-3 text-center">Quantity</div>
+                <div class="col-span-2 text-right">Total</div>
+              </div>
+
+              <!-- Cart Item 1 -->
+              <span th:each="c:  ${cart}">
+                <div class="cart-item border-b border-light-gray p-4">
+                  <div class="flex flex-col md:flex-row md:items-center">
+                    <div class="flex items-center mb-4 md:mb-0 md:w-5/12">
+                      <div class="relative">
+                        <img
+                          th:src="@{/uploads/{img}(img=${c.product?.image})}"
+                          alt="Gourmet Burger"
+                          class="w-20 h-20 rounded-lg object-cover" />
+
+                        <button
+                          class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center">
+                          <i class="fas fa-times text-xs"></i>
+                        </button>
+                      </div>
+                      <div class="ml-4">
+                        <h3 class="font-bold" th:text="${c.product?.title}"></h3>
+                        <p
+                          class="text-sm text-gray-600"
+                          th:text="${c.product?.description != null && c.product.description.length() > 50 ? 
+             c.product.description.substring(0, 40) + '...' : 
+             c.product?.description}"></p>
+                      </div>
+                    </div>
+
+                    <div class="flex justify-between items-center mb-4 md:mb-0 md:w-7/12">
+                      <div class="md:w-2/12 text-center font-medium text-primary">
+                        <span class="md:hidden mr-2">Price:</span>
+                        <span th:text="${'$'+c.product?.price}"></span>
+                      </div>
+
+                      <!-- <div class="md:w-3/12">
+                        <div class="flex items-center justify-center">
+                          <a th:href="@{cart}"
+                            class="quantity-btn w-8 h-8 rounded-full border border-light-gray flex items-center justify-center">
+                            <i class="fas fa-minus"></i>
+                        </a>
+                          <span class="mx-3 font-medium" th:text="${c?.quantity}"></span>
+                          <button
+                            class="quantity-btn w-8 h-8 rounded-full border border-light-gray flex items-center justify-center">
+                            <i class="fas fa-plus"></i>
+                          </button>
+                        </div>
+                      </div> -->
+                      <div class="md:w-3/12">
+                        <div class="flex items-center justify-center">
+                          <!-- Decrement button -->
+                          <a
+                            th:href="@{'/cart/decrement/' + ${c.id}}"
+                            class="quantity-btn w-8 h-8 rounded-full border border-light-gray flex items-center justify-center">
+                            <i class="fas fa-minus"></i>
+                          </a>
+
+                          <!-- Quantity display -->
+                          <span class="mx-3 font-medium" th:text="${c.quantity}">1</span>
+
+                          <!-- Increment button -->
+                          <a
+                            th:href="@{'/cart/increment/' + ${c.id}}"
+                            class="quantity-btn w-8 h-8 rounded-full border border-light-gray flex items-center justify-center">
+                            <i class="fas fa-plus"></i>
+                          </a>
+                        </div>
+                      </div>
+
+                      <div class="md:w-2/12 text-right font-bold">
+                        <!-- <span class="md:hidden mr-2">Total:</span> $25.98 -->
+                        <span class="md:hidden mr-2"></span>
+                        <span th:text="${'$'+ c?.totalPrice}"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </span>
+
+              <!-- Cart Item 2 -->
+              <!-- <div class="cart-item border-b border-light-gray p-4">
+                <div class="flex flex-col md:flex-row md:items-center">
+                  <div class="flex items-center mb-4 md:mb-0 md:w-5/12">
+                    <div class="relative">
+                      <img
+                        src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=200&q=80"
+                        alt="Margherita Pizza"
+                        class="w-20 h-20 rounded-lg object-cover"
+                      />
+                      <button
+                        class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center"
+                      >
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </div>
+                    <div class="ml-4">
+                      <h3 class="font-bold">Margherita Pizza</h3>
+                      <p class="text-sm text-gray-600">Large size, 12 inch</p>
+                    </div>
+                  </div>
+
+                  <div
+                    class="flex justify-between items-center mb-4 md:mb-0 md:w-7/12"
+                  >
+                    <div class="md:w-2/12 text-center font-medium text-primary">
+                      <span class="md:hidden mr-2">Price:</span> $14.99
+                    </div>
+
+                    <div class="md:w-3/12">
+                      <div class="flex items-center justify-center">
+                        <button
+                          class="quantity-btn w-8 h-8 rounded-full border border-light-gray flex items-center justify-center"
+                        >
+                          <i class="fas fa-minus"></i>
+                        </button>
+                        <span class="mx-3 font-medium">1</span>
+                        <button
+                          class="quantity-btn w-8 h-8 rounded-full border border-light-gray flex items-center justify-center"
+                        >
+                          <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="md:w-2/12 text-right font-bold">
+                      <span class="md:hidden mr-2">Total:</span> $14.99
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- Cart Item 3 -->
+              <!-- <div class="cart-item border-b border-light-gray p-4">
+                <div class="flex flex-col md:flex-row md:items-center">
+                  <div class="flex items-center mb-4 md:mb-0 md:w-5/12">
+                    <div class="relative">
+                      <img
+                        src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=200&q=80"
+                        alt="Chocolate Cake"
+                        class="w-20 h-20 rounded-lg object-cover"
+                      />
+                      <button
+                        class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center"
+                      >
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </div>
+                    <div class="ml-4">
+                      <h3 class="font-bold">Chocolate Cake</h3>
+                      <p class="text-sm text-gray-600">
+                        Rich chocolate with ganache
+                      </p>
+                    </div>
+                  </div>
+
+                  <div
+                    class="flex justify-between items-center mb-4 md:mb-0 md:w-7/12"
+                  >
+                    <div class="md:w-2/12 text-center font-medium text-primary">
+                      <span class="md:hidden mr-2">Price:</span> $8.99
+                    </div>
+
+                    <div class="md:w-3/12">
+                      <div class="flex items-center justify-center">
+                        <button
+                          class="quantity-btn w-8 h-8 rounded-full border border-light-gray flex items-center justify-center"
+                        >
+                          <i class="fas fa-minus"></i>
+                        </button>
+                        <span class="mx-3 font-medium">1</span>
+                        <button
+                          class="quantity-btn w-8 h-8 rounded-full border border-light-gray flex items-center justify-center"
+                        >
+                          <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="md:w-2/12 text-right font-bold">
+                      <span class="md:hidden mr-2">Total:</span> $8.99
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- Cart Item 4 -->
+              <!-- <div class="cart-item p-4">
+                <div class="flex flex-col md:flex-row md:items-center">
+                  <div class="flex items-center mb-4 md:mb-0 md:w-5/12">
+                    <div class="relative">
+                      <img
+                        src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=200&q=80"
+                        alt="Avocado Salad"
+                        class="w-20 h-20 rounded-lg object-cover"
+                      />
+                      <button
+                        class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center"
+                      >
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </div>
+                    <div class="ml-4">
+                      <h3 class="font-bold">Avocado Salad</h3>
+                      <p class="text-sm text-gray-600">
+                        Fresh greens with dressing
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex justify-between items-center md:w-7/12">
+                    <div class="md:w-2/12 text-center font-medium text-primary">
+                      <span class="md:hidden mr-2">Price:</span> $10.99
+                    </div>
+
+                    <div class="md:w-3/12">
+                      <div class="flex items-center justify-center">
+                        <button
+                          class="quantity-btn w-8 h-8 rounded-full border border-light-gray flex items-center justify-center"
+                        >
+                          <i class="fas fa-minus"></i>
+                        </button>
+                        <span class="mx-3 font-medium">1</span>
+                        <button
+                          class="quantity-btn w-8 h-8 rounded-full border border-light-gray flex items-center justify-center"
+                        >
+                          <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="md:w-2/12 text-right font-bold">
+                      <span class="md:hidden mr-2">Total:</span> $10.99
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+
+            <!-- Promo Code -->
+            <div class="mt-6 bg-white rounded-2xl shadow-custom p-6">
+              <h3 class="text-xl font-bold mb-4">Apply Promo Code</h3>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <input
+                  type="text"
+                  placeholder="Enter promo code"
+                  class="flex-1 px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+                <button
+                  class="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-dark transition w-full sm:w-auto">
+                  Apply
+                </button>
+              </div>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium"
+                  >FREESHIP</span
+                >
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium"
+                  >FIRSTORDER</span
+                >
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium"
+                  >SUMMER25</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Summary -->
+          <div>
+            <div class="bg-white rounded-2xl shadow-custom p-6 sticky top-28">
+              <h2 class="text-2xl font-bold mb-6">Order Summary</h2>
+
+              <div class="space-y-4 mb-6">
+                <div class="flex justify-between">
+                  <span>Subtotal</span>
+                  <span class="font-medium">$60.95</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Delivery Fee</span>
+                  <span class="font-medium">$2.99</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Discount</span>
+                  <span class="font-medium text-green-600">-$5.00</span>
+                </div>
+                <div class="flex justify-between pt-4 border-t border-light-gray">
+                  <span class="font-bold">Total</span>
+                  <span class="font-bold text-xl">$58.94</span>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <h3 class="font-bold mb-2">Delivery Address</h3>
+                <div class="bg-light-gray p-4 rounded-lg">
+                  <p class="font-medium">John Doe</p>
+                  <p class="text-gray-600">123 Main Street, Apt 4B</p>
+                  <p class="text-gray-600">New York, NY 10001</p>
+                  <p class="text-gray-600">+1 (555) 123-4567</p>
+                  <a
+                    href="#"
+                    class="inline-block mt-2 text-primary font-medium hover:text-primary-dark"
+                    >Change Address</a
+                  >
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <button
+                  class="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-primary-dark transition flex items-center justify-center">
+                  Proceed to Checkout
+                  <i class="fas fa-arrow-right ml-3"></i>
+                </button>
+
+                <div class="flex items-center justify-center mt-4">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MasterCard_Logo.svg"
+                    alt="Mastercard"
+                    class="h-8 mx-2" />
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
+                    alt="Visa"
+                    class="h-8 mx-2" />
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
+                    alt="PayPal"
+                    class="h-6 mx-2" />
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/3/39/Apple_Pay_logo.svg"
+                    alt="Apple Pay"
+                    class="h-6 mx-2" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Save for Later -->
+            <div class="mt-6 bg-white rounded-2xl shadow-custom p-6 block md:hidden">
+              <h3 class="text-xl font-bold mb-4">Saved for Later</h3>
+
+              <div class="flex items-center p-3 border border-light-gray rounded-lg mb-3">
+                <img
+                  src="https://images.unsplash.com/photo-1559715745-e1b33a271c8f?auto=format&fit=crop&w=80&q=80"
+                  alt="Sushi Platter"
+                  class="w-16 h-16 rounded-lg object-cover" />
+                <div class="ml-4 flex-1">
+                  <h4 class="font-bold">Sushi Platter</h4>
+                  <p class="text-sm text-gray-600">Assorted fresh sushi</p>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-primary font-bold">$18.99</span>
+                    <button class="text-primary font-medium hover:text-primary-dark">
+                      Move to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center p-3 border border-light-gray rounded-lg">
+                <img
+                  src="https://images.unsplash.com/photo-1606755962773-d324e7a7a7b6?auto=format&fit=crop&w=80&q=80"
+                  alt="Pasta Carbonara"
+                  class="w-16 h-16 rounded-lg object-cover" />
+                <div class="ml-4 flex-1">
+                  <h4 class="font-bold">Pasta Carbonara</h4>
+                  <p class="text-sm text-gray-600">Classic Italian pasta</p>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-primary font-bold">$13.99</span>
+                    <button class="text-primary font-medium hover:text-primary-dark">
+                      Move to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recently Viewed -->
+    <section class="py-16 bg-light">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">You Might Also Like</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Customers who ordered these items also viewed
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <!-- Item 1 -->
+          <div class="bg-white rounded-xl shadow-custom overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1606755962773-d324e7a7a7b6?auto=format&fit=crop&w=600&q=80"
+              alt="Pasta Carbonara"
+              class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="font-bold text-lg">Pasta Carbonara</h3>
+              <p class="text-gray-600 mb-3">Classic Italian pasta with pancetta</p>
+              <div class="flex justify-between items-center">
+                <span class="text-primary font-bold">$13.99</span>
+                <button
+                  class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-dark transition">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="bg-white rounded-xl shadow-custom overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1559715745-e1b33a271c8f?auto=format&fit=crop&w=600&q=80"
+              alt="Sushi Platter"
+              class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="font-bold text-lg">Sushi Platter</h3>
+              <p class="text-gray-600 mb-3">Assorted fresh sushi with salmon</p>
+              <div class="flex justify-between items-center">
+                <span class="text-primary font-bold">$18.99</span>
+                <button
+                  class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-dark transition">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="bg-white rounded-xl shadow-custom overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80"
+              alt="Chocolate Cake"
+              class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="font-bold text-lg">Chocolate Cake</h3>
+              <p class="text-gray-600 mb-3">Rich chocolate with layers of ganache</p>
+              <div class="flex justify-between items-center">
+                <span class="text-primary font-bold">$8.99</span>
+                <button
+                  class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-dark transition">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="bg-white rounded-xl shadow-custom overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80"
+              alt="Avocado Salad"
+              class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="font-bold text-lg">Avocado Salad</h3>
+              <p class="text-gray-600 mb-3">Fresh greens with avocado</p>
+              <div class="flex justify-between items-center">
+                <span class="text-primary font-bold">$10.99</span>
+                <button
+                  class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-dark transition">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <span th:replace="~{layouts/webfooter :: webfoot }"></span>
+
+    <!-- Floating Cart Button (Mobile) -->
+    <div class="fixed bottom-6 right-6 md:hidden">
+      <a
+        href="#"
+        class="w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-lg hover:bg-primary-dark transition">
+        <i class="fas fa-shopping-cart text-white text-xl"></i>
+      </a>
+    </div>
+
+    <script>
+      // Mobile menu toggle
+      document
+        .getElementById("mobileMenuButton")
+        .addEventListener("click", function () {
+          const mobileMenu = document.getElementById("mobileMenu");
+          mobileMenu.classList.toggle("open");
+
+          // Change icon
+          const icon = this.querySelector("i");
+          if (icon.classList.contains("fa-bars")) {
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-times");
+          } else {
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+          }
+        });
+
+      // Quantity buttons functionality
+      document.querySelectorAll(".quantity-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          const quantityElement = this.parentElement.querySelector("span");
+          let quantity = parseInt(quantityElement.textContent);
+
+          if (this.querySelector(".fa-minus")) {
+            if (quantity > 1) {
+              quantityElement.textContent = quantity - 1;
+            }
+          } else if (this.querySelector(".fa-plus")) {
+            quantityElement.textContent = quantity + 1;
+          }
+
+          // In a real app, you would update the cart total here
+        });
+      });
+
+      // Remove item functionality
+      document.querySelectorAll(".cart-item .fa-times").forEach((icon) => {
+        icon.closest("button").addEventListener("click", function () {
+          const cartItem = this.closest(".cart-item");
+          cartItem.style.opacity = "0";
+          setTimeout(() => {
+            cartItem.remove();
+          }, 300);
+        });
+      });
+    </script>
+  </body>
+</html>

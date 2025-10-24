@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FreshBite | Login</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#00A082",
+              "primary-dark": "#008a6e",
+              secondary: "#FF6B00",
+              dark: "#1e3932",
+              light: "#f9f9f9",
+              gray: "#5e5e5e",
+              "light-gray": "#eaeaea",
+            },
+            boxShadow: {
+              custom: "0 4px 12px rgba(0, 0, 0, 0.08)",
+              "custom-lg": "0 10px 25px rgba(0, 0, 0, 0.1)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f9f9f9;
+      }
+
+      .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .login-card {
+        transition: all 0.3s ease;
+      }
+
+      .login-card:hover {
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .input-group {
+        position: relative;
+      }
+
+      .input-group i {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #00a082;
+      }
+
+      .input-group input {
+        padding-left: 45px;
+      }
+
+      .social-btn {
+        transition: all 0.3s ease;
+      }
+
+      .social-btn:hover {
+        transform: translateY(-3px);
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #777;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid #eaeaea;
+      }
+
+      .divider::before {
+        margin-right: 10px;
+      }
+
+      .divider::after {
+        margin-left: 10px;
+      }
+
+      .floating-label {
+        position: absolute;
+        top: 18px;
+        left: 50px;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        color: #777;
+      }
+
+      input:focus ~ .floating-label,
+      input:not(:placeholder-shown) ~ .floating-label {
+        top: -10px;
+        left: 45px;
+        background: white;
+        padding: 0 5px;
+        font-size: 0.8rem;
+        color: #00a082;
+      }
+
+      .password-toggle {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #777;
+      }
+
+      .illustration {
+        background: linear-gradient(
+          to bottom right,
+          rgba(0, 160, 130, 0.1),
+          rgba(0, 160, 130, 0.05)
+        );
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <!-- Header -->
+   <div th:replace="layouts/authlayoutnav :: navbar"></div>
+
+    <!-- Main Content -->
+    <div class="login-container">
+      <div class="container mx-auto max-w-6xl">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <!-- Login Form -->
+          <div
+            class="login-card bg-white rounded-2xl shadow-custom p-8 md:p-10 max-w-lg mx-auto w-full"
+          >
+            <div class="text-center mb-8">
+              <h1 class="text-3xl font-bold text-gray-800 mb-2">
+                Welcome Back!
+              </h1>
+              <p class="text-gray-600">Sign in to your account to continue</p>
+            </div>
+            <div th:if="${errorMessage}" class="text-red-500" th:text="${errorMessage}"></div>
+
+            <form class="space-y-6" th:action="@{/login}" method="post">
+              <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder=" "
+                />
+                <label for="email" class="floating-label">Email Address</label>
+              </div>
+
+              <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  required="Enter password"
+                  class="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder=" "
+                />
+                <label for="password" class="floating-label">Password</label>
+               
+              </div>
+
+              <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="remember"
+                    class="w-4 h-4 text-primary rounded focus:ring-primary"
+                  />
+                  <label for="remember" class="ml-2 text-gray-700"
+                    >Remember me</label
+                  >
+                </div>
+                <a
+                  href="#"
+                  class="text-primary hover:text-primary-dark transition"
+                  >Forgot Password?</a
+                >
+              </div>
+
+              <button
+                type="submit"
+                class="w-full py-3 bg-primary text-white rounded-lg font-bold text-lg hover:bg-primary-dark transition"
+              >
+                Sign In
+              </button>
+
+              <div class="divider text-gray-500 text-sm">OR CONTINUE WITH</div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <a
+                  href="#"
+                  class="social-btn flex items-center justify-center py-3 border border-light-gray rounded-lg hover:border-gray-300 transition"
+                >
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                    alt="Google"
+                    class="h-5 mr-2"
+                  />
+                  Google
+                </a>
+                <a
+                  href="#"
+                  class="social-btn flex items-center justify-center py-3 border border-light-gray rounded-lg hover:border-gray-300 transition"
+                >
+                  <i class="fab fa-facebook text-blue-600 mr-2"></i>
+                  Facebook
+                </a>
+              </div>
+
+              <div class="text-center mt-6">
+                <p class="text-gray-600">
+                  Don't have an account?
+                  <a
+                    href="register"
+                    class="text-primary font-medium hover:text-primary-dark transition"
+                    >Sign Up</a
+                  >
+                </p>
+              </div>
+            </form>
+          </div>
+
+          <!-- Illustration -->
+          <div class="hidden lg:block">
+            <div
+              class="illustration rounded-2xl p-8 h-full flex flex-col justify-center"
+            >
+              <div class="text-center mb-8">
+                <h2 class="text-4xl font-bold text-dark mb-4">
+                  Delicious Food Awaits!
+                </h2>
+                <p class="text-gray-600 max-w-md mx-auto">
+                  Sign in to access exclusive offers, track your orders, and
+                  save your favorite meals.
+                </p>
+              </div>
+
+              <div class="flex justify-center mb-10">
+                <img
+                  src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80"
+                  alt="Food Delivery"
+                  class="rounded-xl w-64 shadow-lg"
+                />
+              </div>
+
+              <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto">
+                <div class="bg-white p-4 rounded-lg shadow-custom text-center">
+                  <div
+                    class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2"
+                  >
+                    <i class="fas fa-bolt text-primary"></i>
+                  </div>
+                  <p class="text-sm font-medium">Fast Delivery</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-custom text-center">
+                  <div
+                    class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2"
+                  >
+                    <i class="fas fa-tag text-primary"></i>
+                  </div>
+                  <p class="text-sm font-medium">Exclusive Offers</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-custom text-center">
+                  <div
+                    class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2"
+                  >
+                    <i class="fas fa-heart text-primary"></i>
+                  </div>
+                  <p class="text-sm font-medium">Save Favorites</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer th:replace="layouts/authlayoutfoot :: footer"></footer>
+
+    <!-- <script>
+        // Toggle password visibility
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        
+        togglePassword.addEventListener('click', function() {
+            // Toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            
+            // Toggle the eye icon
+            this.querySelector('i').classList.toggle('fa-eye');
+            this.querySelector('i').classList.toggle('fa-eye-slash');
+        });
+        
+        // Form validation
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Basic email validation
+            if (!/\S+@\S+\.\S+/.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // In a real app, you would submit the form here
+            alert('Login successful! Redirecting...');
+            // window.location.href = 'dashboard.html';
+        });
+        
+        // Add animation to form elements on focus
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('ring-2', 'ring-primary');
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.classList.remove('ring-2', 'ring-primary');
+            });
+        });
+    </script> -->
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <header class="bg-white shadow-sm" th:fragment="navbar">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <a href="#" class="flex items-center">
+              <i class="fas fa-utensils text-secondary text-2xl mr-2"></i>
+              <span class="text-primary text-2xl font-bold">FreshBite</span>
+            </a>
+          </div>
+
+          <!-- Navigation -->
+          <nav>
+            <ul class="flex space-x-4">
+              <li>
+                <a href="home" class="text-gray-600 hover:text-primary transition"
+                  >Home</a
+                >
+              </li>
+              <li th:if="${page != 'register'}"><a href="/register">Sign Up</a></li>
+              <li th:if="${page != 'login'}"><a href="/login">Sign In</a></li>
+              <li>
+                <a href="#" class="text-gray-600 hover:text-primary transition"
+                  >Help</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+</body>
+</html>

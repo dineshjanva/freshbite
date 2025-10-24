@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshBite | Privacy Policy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A082',
+                        'primary-dark': '#008a6e',
+                        secondary: '#FF6B00',
+                        dark: '#1e3932',
+                        light: '#f9f9f9',
+                        gray: '#5e5e5e',
+                        'light-gray': '#eaeaea',
+                    },
+                    boxShadow: {
+                        'custom': '0 4px 12px rgba(0, 0, 0, 0.08)',
+                        'custom-lg': '0 10px 25px rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        .policy-nav {
+            position: sticky;
+            top: 120px;
+        }
+        
+        .policy-nav a {
+            display: block;
+            padding: 10px 15px;
+            border-left: 3px solid #eaeaea;
+            transition: all 0.3s ease;
+        }
+        
+        .policy-nav a:hover, .policy-nav a.active {
+            border-left: 3px solid #00A082;
+            background-color: rgba(0, 160, 130, 0.05);
+            color: #00A082;
+        }
+        
+        .section-content h3 {
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .section-content h3:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 12px;
+            height: 12px;
+            background-color: #00A082;
+            border-radius: 50%;
+        }
+        
+        .mobile-menu {
+            transition: all 0.4s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(120deg, rgba(0, 160, 130, 0.1), rgba(255, 107, 0, 0.1));
+            border-left: 4px solid #00A082;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Responsive Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <i class="fas fa-utensils text-secondary text-2xl mr-2"></i>
+                    <span class="text-primary text-2xl font-bold">FreshBite</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition">Home</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition">Menu</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition">Offers</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition">About</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- Desktop Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="px-4 py-2 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition flex items-center">
+                        <i class="fas fa-user mr-2"></i> Sign In
+                    </a>
+                    <a href="#" class="px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition flex items-center relative">
+                        <i class="fas fa-shopping-cart mr-2"></i> 
+                        <span class="hidden sm:inline">Cart</span>
+                        <span class="absolute -top-2 -right-2 bg-secondary rounded-full w-6 h-6 flex items-center justify-center text-xs">3</span>
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="md:hidden text-gray-600 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="mobile-menu md:hidden bg-white">
+                <ul class="py-4 space-y-4 border-t">
+                    <li><a href="#" class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary">Home</a></li>
+                    <li><a href="#" class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary">Menu</a></li>
+                    <li><a href="#" class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary">Offers</a></li>
+                    <li><a href="#" class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary">About</a></li>
+                    <li><a href="#" class="block py-2 px-4 text-gray-600 hover:bg-light-gray hover:text-primary">Contact</a></li>
+                    <li class="flex space-x-4 px-4 pt-4">
+                        <a href="#" class="flex-1 text-center py-2 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition">
+                            Sign In
+                        </a>
+                        <a href="#" class="flex-1 text-center py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition relative">
+                            Cart
+                            <span class="absolute -top-2 -right-2 bg-secondary rounded-full w-6 h-6 flex items-center justify-center text-xs">3</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="py-12 md:py-16 bg-gradient-to-r from-primary to-primary-dark text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-6">Privacy Policy</h1>
+                <p class="text-xl mb-8">We are committed to protecting your personal information and your right to privacy.</p>
+                <p class="opacity-90">Last updated: August 15, 2023</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Policy Content -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Navigation Sidebar -->
+                <div class="lg:w-1/4">
+                    <div class="policy-nav bg-white rounded-lg shadow-custom p-6 hidden lg:block">
+                        <h3 class="text-lg font-bold mb-4">Policy Sections</h3>
+                        <a href="#introduction" class="active">Introduction</a>
+                        <a href="#data-collection">What Data We Collect</a>
+                        <a href="#data-use">How We Use Your Data</a>
+                        <a href="#data-sharing">Data Sharing</a>
+                        <a href="#cookies">Cookies & Tracking</a>
+                        <a href="#security">Data Security</a>
+                        <a href="#rights">Your Privacy Rights</a>
+                        <a href="#changes">Policy Changes</a>
+                        <a href="#contact">Contact Us</a>
+                    </div>
+
+                    <!-- Mobile Navigation Dropdown -->
+                    <div class="lg:hidden mb-8">
+                        <select id="mobileNav" class="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            <option value="#introduction">Introduction</option>
+                            <option value="#data-collection">What Data We Collect</option>
+                            <option value="#data-use">How We Use Your Data</option>
+                            <option value="#data-sharing">Data Sharing</option>
+                            <option value="#cookies">Cookies & Tracking</option>
+                            <option value="#security">Data Security</option>
+                            <option value="#rights">Your Privacy Rights</option>
+                            <option value="#changes">Policy Changes</option>
+                            <option value="#contact">Contact Us</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="lg:w-3/4">
+                    <div class="bg-white rounded-2xl shadow-custom overflow-hidden">
+                        <div class="p-6 md:p-8">
+                            <!-- Introduction -->
+                            <div id="introduction" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">1. Introduction</h2>
+                                <p class="mb-4">Welcome to FreshBite ("we," "our," or "us"). We operate the FreshBite mobile application and website (the "Service").</p>
+                                <p class="mb-6">This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Service. Please read this policy carefully. If you do not agree with the terms, please do not access or use the Service.</p>
+                                
+                                <div class="highlight-box p-5 rounded-lg mb-6">
+                                    <p class="font-bold mb-2">Key Points:</p>
+                                    <ul class="list-disc pl-5 space-y-2">
+                                        <li>We collect personal data to provide and improve our Service</li>
+                                        <li>We do not sell your personal information to third parties</li>
+                                        <li>You have rights regarding your personal data</li>
+                                        <li>We implement security measures to protect your information</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Data Collection -->
+                            <div id="data-collection" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">2. What Data We Collect</h2>
+                                <p class="mb-6">We collect several types of information for various purposes to provide and improve our Service to you.</p>
+                                
+                                <h3 class="text-xl font-bold mb-4 mt-8">Personal Data</h3>
+                                <p class="mb-4">While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you ("Personal Data"). This may include:</p>
+                                <ul class="list-disc pl-5 mb-6 space-y-2">
+                                    <li>Name, email address, phone number</li>
+                                    <li>Delivery address and location data</li>
+                                    <li>Payment information (credit card details processed securely)</li>
+                                    <li>Account credentials (username and password)</li>
+                                    <li>Order history and preferences</li>
+                                </ul>
+                                
+                                <h3 class="text-xl font-bold mb-4">Usage Data</h3>
+                                <p class="mb-4">We collect information on how the Service is accessed and used ("Usage Data"). This may include:</p>
+                                <ul class="list-disc pl-5 mb-6 space-y-2">
+                                    <li>Device information (IP address, browser type, device type)</li>
+                                    <li>Pages visited, time spent on pages</li>
+                                    <li>Search queries, order preferences</li>
+                                    <li>Crash reports and performance data</li>
+                                </ul>
+                                
+                                <h3 class="text-xl font-bold mb-4">Location Data</h3>
+                                <p>We may collect your location data to provide location-based services such as delivery tracking and restaurant recommendations. You can enable or disable location services through your device settings.</p>
+                            </div>
+
+                            <!-- Data Use -->
+                            <div id="data-use" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">3. How We Use Your Data</h2>
+                                <p class="mb-6">We use the collected data for various purposes:</p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                    <div class="p-5 border border-light-gray rounded-lg">
+                                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                                            <i class="fas fa-shopping-cart text-primary text-xl"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">Order Processing</h3>
+                                        <p class="text-gray-600">To process and deliver your food orders, including payment processing and delivery coordination.</p>
+                                    </div>
+                                    
+                                    <div class="p-5 border border-light-gray rounded-lg">
+                                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                                            <i class="fas fa-user text-primary text-xl"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">Account Management</h3>
+                                        <p class="text-gray-600">To create and manage your account, provide customer support, and communicate with you.</p>
+                                    </div>
+                                    
+                                    <div class="p-5 border border-light-gray rounded-lg">
+                                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                                            <i class="fas fa-bullhorn text-primary text-xl"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">Marketing & Promotions</h3>
+                                        <p class="text-gray-600">To send promotional offers, newsletters, and updates about our services (you can opt-out anytime).</p>
+                                    </div>
+                                    
+                                    <div class="p-5 border border-light-gray rounded-lg">
+                                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                                            <i class="fas fa-chart-line text-primary text-xl"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">Service Improvement</h3>
+                                        <p class="text-gray-600">To analyze usage patterns, improve our service, and develop new features.</p>
+                                    </div>
+                                </div>
+                                
+                                <p>We may also use your information for legal compliance, fraud prevention, and to enforce our Terms of Service.</p>
+                            </div>
+
+                            <!-- Data Sharing -->
+                            <div id="data-sharing" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">4. Data Sharing and Disclosure</h2>
+                                <p class="mb-6">We may share your information in the following situations:</p>
+                                
+                                <h3 class="text-xl font-bold mb-4">With Service Providers</h3>
+                                <p class="mb-4">We share data with third-party vendors who perform services on our behalf, such as:</p>
+                                <ul class="list-disc pl-5 mb-6 space-y-2">
+                                    <li>Payment processors (Stripe, PayPal)</li>
+                                    <li>Delivery partners and drivers</li>
+                                    <li>Restaurant partners for order fulfillment</li>
+                                    <li>Cloud storage providers (AWS, Google Cloud)</li>
+                                    <li>Analytics and marketing platforms</li>
+                                </ul>
+                                
+                                <h3 class="text-xl font-bold mb-4">For Legal Reasons</h3>
+                                <p class="mb-4">We may disclose your information where required by law, to protect our rights, or to comply with legal processes.</p>
+                                
+                                <h3 class="text-xl font-bold mb-4">Business Transfers</h3>
+                                <p class="mb-6">In connection with any merger, sale of company assets, or acquisition, your information may be transferred.</p>
+                                
+                                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                                    <div class="flex">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-exclamation-circle text-yellow-500 text-xl"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-yellow-700"><strong>We do not sell your personal information</strong> to third parties for their marketing purposes.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cookies -->
+                            <div id="cookies" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">5. Cookies and Tracking Technologies</h2>
+                                <p class="mb-4">We use cookies and similar tracking technologies to track activity on our Service and hold certain information.</p>
+                                
+                                <div class="overflow-x-auto">
+                                    <table class="min-w-full divide-y divide-light-gray mt-6 mb-8">
+                                        <thead class="bg-light-gray">
+                                            <tr>
+                                                <th class="px-4 py-3 text-left">Type</th>
+                                                <th class="px-4 py-3 text-left">Purpose</th>
+                                                <th class="px-4 py-3 text-left">Examples</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-light-gray">
+                                            <tr>
+                                                <td class="px-4 py-3 font-medium">Essential Cookies</td>
+                                                <td class="px-4 py-3">Necessary for site functionality</td>
+                                                <td class="px-4 py-3">Session management, authentication</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-4 py-3 font-medium">Preference Cookies</td>
+                                                <td class="px-4 py-3">Remember your preferences</td>
+                                                <td class="px-4 py-3">Language settings, dietary preferences</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-4 py-3 font-medium">Analytics Cookies</td>
+                                                <td class="px-4 py-3">Understand usage patterns</td>
+                                                <td class="px-4 py-3">Google Analytics, Mixpanel</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-4 py-3 font-medium">Marketing Cookies</td>
+                                                <td class="px-4 py-3">Deliver relevant advertising</td>
+                                                <td class="px-4 py-3">Facebook Pixel, Google Ads</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</p>
+                            </div>
+
+                            <!-- Security -->
+                            <div id="security" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">6. Data Security</h2>
+                                <p class="mb-6">We prioritize the security of your data and implement appropriate measures to protect it:</p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                                    <div class="text-center p-5 border border-light-gray rounded-lg">
+                                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i class="fas fa-lock text-primary text-2xl"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">Encryption</h3>
+                                        <p class="text-gray-600">All data in transit is encrypted using TLS 1.2+ protocols</p>
+                                    </div>
+                                    
+                                    <div class="text-center p-5 border border-light-gray rounded-lg">
+                                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i class="fas fa-shield-alt text-primary text-2xl"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">Access Control</h3>
+                                        <p class="text-gray-600">Strict access controls and authentication mechanisms</p>
+                                    </div>
+                                    
+                                    <div class="text-center p-5 border border-light-gray rounded-lg">
+                                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i class="fas fa-database text-primary text-2xl"></i>
+                                        </div>
+                                        <h3 class="font-bold mb-2">Secure Storage</h3>
+                                        <p class="text-gray-600">Data stored in secure facilities with regular backups</p>
+                                    </div>
+                                </div>
+                                
+                                <p>While we strive to use commercially acceptable means to protect your Personal Data, no method of transmission over the Internet or method of electronic storage is 100% secure. We cannot guarantee absolute security.</p>
+                            </div>
+
+                            <!-- Your Rights -->
+                            <div id="rights" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">7. Your Privacy Rights</h2>
+                                <p class="mb-6">Depending on your location, you may have the following rights regarding your personal data:</p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                                    <div class="p-4 bg-light rounded-lg">
+                                        <h3 class="font-bold mb-2 flex items-center">
+                                            <i class="fas fa-eye mr-2 text-primary"></i> Right to Access
+                                        </h3>
+                                        <p>You can request copies of your personal data.</p>
+                                    </div>
+                                    
+                                    <div class="p-4 bg-light rounded-lg">
+                                        <h3 class="font-bold mb-2 flex items-center">
+                                            <i class="fas fa-edit mr-2 text-primary"></i> Right to Rectification
+                                        </h3>
+                                        <p>You can request correction of inaccurate data.</p>
+                                    </div>
+                                    
+                                    <div class="p-4 bg-light rounded-lg">
+                                        <h3 class="font-bold mb-2 flex items-center">
+                                            <i class="fas fa-trash-alt mr-2 text-primary"></i> Right to Erasure
+                                        </h3>
+                                        <p>You can request deletion of your personal data.</p>
+                                    </div>
+                                    
+                                    <div class="p-4 bg-light rounded-lg">
+                                        <h3 class="font-bold mb-2 flex items-center">
+                                            <i class="fas fa-ban mr-2 text-primary"></i> Right to Restrict Processing
+                                        </h3>
+                                        <p>You can request restriction of data processing.</p>
+                                    </div>
+                                    
+                                    <div class="p-4 bg-light rounded-lg">
+                                        <h3 class="font-bold mb-2 flex items-center">
+                                            <i class="fas fa-download mr-2 text-primary"></i> Right to Data Portability
+                                        </h3>
+                                        <p>You can request transfer of your data to another organization.</p>
+                                    </div>
+                                    
+                                    <div class="p-4 bg-light rounded-lg">
+                                        <h3 class="font-bold mb-2 flex items-center">
+                                            <i class="fas fa-times-circle mr-2 text-primary"></i> Right to Object
+                                        </h3>
+                                        <p>You can object to certain types of processing.</p>
+                                    </div>
+                                </div>
+                                
+                                <p>To exercise any of these rights, please contact us using the information in the "Contact Us" section below. We may need to verify your identity before fulfilling your request.</p>
+                            </div>
+
+                            <!-- Policy Changes -->
+                            <div id="changes" class="section-content mb-12">
+                                <h2 class="text-2xl font-bold mb-6">8. Changes to This Policy</h2>
+                                <p class="mb-4">We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+                                <p class="mb-6">We will let you know via email and/or a prominent notice on our Service prior to the change becoming effective. The "Last updated" date at the top of this Privacy Policy indicates when it was last revised.</p>
+                                
+                                <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                                    <div class="flex">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-info-circle text-blue-500 text-xl"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-blue-700">We encourage you to review this Privacy Policy periodically for any changes. Changes are effective when they are posted on this page.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Contact Us -->
+                            <div id="contact" class="section-content">
+                                <h2 class="text-2xl font-bold mb-6">9. Contact Us</h2>
+                                <p class="mb-6">If you have any questions or concerns about this Privacy Policy, please contact us:</p>
+                                
+                                <div class="bg-white border border-light-gray rounded-lg p-6">
+                                    <div class="flex flex-col md:flex-row gap-6">
+                                        <div class="md:w-1/2">
+                                            <h3 class="font-bold mb-4">By Email</h3>
+                                            <p class="mb-4">For privacy-related inquiries:</p>
+                                            <a href="mailto:privacy@freshbite.com" class="text-primary font-bold hover:underline">privacy@freshbite.com</a>
+                                            
+                                            <h3 class="font-bold mt-6 mb-4">By Mail</h3>
+                                            <address class="not-italic">
+                                                FreshBite Privacy Office<br>
+                                                123 Food Street<br>
+                                                New York, NY 10001<br>
+                                                United States
+                                            </address>
+                                        </div>
+                                        
+                                        <div class="md:w-1/2">
+                                            <h3 class="font-bold mb-4">Data Protection Officer</h3>
+                                            <p class="mb-4">We have appointed a Data Protection Officer (DPO) who can be reached at:</p>
+                                            <p class="mb-2"><strong>Name:</strong> Sarah Johnson</p>
+                                            <p class="mb-2"><strong>Email:</strong> dpo@freshbite.com</p>
+                                            <p class="mb-2"><strong>Phone:</strong> +1 (555) 123-4567 ext. 789</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <p class="mt-6">We will respond to your inquiry within 30 days as required by applicable law.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h4 class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block">FreshBite</h4>
+                    <p class="text-gray-300 mb-6">Delivering delicious meals with speed and quality since 2020. Your satisfaction is our priority.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Services</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Menu</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Refund Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Delivery Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Cookie Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block">Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-300">123 Food Street, New York</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-300">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-300">support@freshbite.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clock text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-300">Mon-Sun: 10:00 AM - 11:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 text-center text-gray-400">
+                <p>&copy; 2023 FreshBite. All rights reserved. Designed with ❤️ for food lovers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('open');
+            
+            // Change icon
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Mobile navigation
+        document.getElementById('mobileNav').addEventListener('change', function() {
+            const target = this.value;
+            document.querySelector(target).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+        
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section-content');
+            const navLinks = document.querySelectorAll('.policy-nav a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

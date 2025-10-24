@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <footer class="bg-dark text-white pt-16 pb-8" th:fragment="webfoot">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <div>
+            <h4
+              class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block"
+            >
+              FreshBite
+            </h4>
+            <p class="text-gray-300 mb-6">
+              Delivering delicious meals with speed and quality since 2020. Your
+              satisfaction is our priority.
+            </p>
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4
+              class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block"
+            >
+              Quick Links
+            </h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Menu</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4
+              class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block"
+            >
+              Our Policies
+            </h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Terms of Service</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Refund Policy</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Delivery Policy</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition"
+                  >Sustainability</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4
+              class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary inline-block"
+            >
+              Contact Us
+            </h4>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                <span class="text-gray-300">123 Food Street, New York</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-phone text-primary mt-1 mr-3"></i>
+                <span class="text-gray-300">+1 (555) 123-4567</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-envelope text-primary mt-1 mr-3"></i>
+                <span class="text-gray-300">support@freshbite.com</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-clock text-primary mt-1 mr-3"></i>
+                <span class="text-gray-300">Mon-Sun: 10:00 AM - 11:00 PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-white/10 text-center text-gray-400">
+          <p>
+            &copy; <span th:text="${#dates.format(#dates.createNow(),'yyyy')}"></span> FreshBite. All rights reserved. Designed with ❤️ for
+            food lovers.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+</body>
+</html>
