@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+// import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -39,8 +39,6 @@ public class HomeWebController {
     @Autowired
     private CartService cartService;
 
-    
-    
     @GetMapping("/")
     public String home(Model model) {
         List<Product> products =productService.top4();
@@ -68,7 +66,6 @@ public class HomeWebController {
 
     @PostMapping("contact")
     public String contectdata(@Valid @ModelAttribute Contact contact, BindingResult br,Model model,RedirectAttributes ra) {
-        //TODO: process POST request
         // System.out.println(entity);
         if(br.hasErrors()){
             model.addAttribute("contact", contact);

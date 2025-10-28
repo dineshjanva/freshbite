@@ -139,7 +139,7 @@
   </head>
   <body class="bg-light">
     <!-- Header -->
-   <div th:replace="layouts/authlayoutnav :: navbar"></div>
+   <div th:replace="~{layouts/authlayoutnav :: navbar}"></div>
 
     <!-- Main Content -->
     <div class="login-container">
@@ -302,7 +302,7 @@
     </div>
 
     <!-- Footer -->
-    <footer th:replace="layouts/authlayoutfoot :: footer"></footer>
+    <footer th:replace="~{layouts/authlayoutfoot :: footer}"></footer>
 
     <!-- <script>
         // Toggle password visibility

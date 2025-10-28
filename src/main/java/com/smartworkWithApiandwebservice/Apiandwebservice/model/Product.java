@@ -7,8 +7,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import jakarta.persistence.OneToMany;
 
 @Entity
 @Getter
@@ -35,9 +39,13 @@ public class Product {
     private double price; 
     // private double discountPrice;
     private boolean active = true;
+
     private LocalDateTime createdAt = LocalDateTime.now();
 
     private LocalDateTime updatedAt = LocalDateTime.now();
+
+    @OneToMany(mappedBy = "product")
+    private Set<Offer_product> offerProducts = new HashSet<>();
 
     public Product orElseThrow(Object object) {
         

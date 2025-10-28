@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.smartworkWithApiandwebservice.Apiandwebservice.model.User;
+// import com.smartworkWithApiandwebservice.Apiandwebservice.security.CustomUserDetailsService;
 import com.smartworkWithApiandwebservice.Apiandwebservice.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -16,6 +17,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.bind.annotation.RequestParam;
+// import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @Controller
@@ -23,6 +26,9 @@ public class AuthController {
 
     @Autowired
     private UserService userService;
+
+    // @Autowired
+    // private CustomUserDetailsService customUserDetailsService;
 
     @GetMapping("login")
     public String login(Model model) {
@@ -34,24 +40,33 @@ public class AuthController {
     public String loginData(@RequestParam String email,
     @RequestParam String password, 
     HttpSession session,
-    // BindingResult br,
     RedirectAttributes redirectAttributes) {
+
 
         User user = userService.findByEmail(email);
 
+       
         if(user==null){
             redirectAttributes.addFlashAttribute("errorMessage","No user found with this email!");
             return "redirect:/login";
         }
+        // System.out.println(user.getEmail());
+        // System.out.println(user.getPassword());
+        // System.out.println(password);
+        
         if(!user.getPassword().equals(password)){
-             redirectAttributes.addFlashAttribute("errorMessage", "Invalid password!");
-        return "redirect:/login";
+            redirectAttributes.addFlashAttribute("errorMessage", "Invalid password!");
+            return "redirect:/login";
         }
+        
 
         session.setAttribute("loginUser", user);
         redirectAttributes.addFlashAttribute("successMessage", "Welcome " + user.getFirstName() + "!");
         return "redirect:/";
     }
+
+
+    
     
     @GetMapping("register")
     public String register(Model model) {

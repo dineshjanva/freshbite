@@ -85,7 +85,7 @@
   </head>
   <body class="bg-light">
     <!-- Responsive Header -->
-    <header th:replace="layouts/authlayoutnav :: navbar"></header>
+    <header th:replace="~{layouts/authlayoutnav :: navbar}"></header>
 
     <!-- Registration Section -->
     <section class="py-12 md:py-16">
@@ -805,7 +805,7 @@
         </div>
       </div>
     </footer> -->
-    <footer th:replace="layouts/authlayoutfoot :: footer"></footer>
+    <footer th:replace="~{layouts/authlayoutfoot :: footer}"></footer>
 
     <script>
       // Mobile menu toggle
