@@ -91,7 +91,7 @@
   </head>
   <body class="bg-light text-dark">
     <!-- Responsive Header -->
-    <header th:replace="layouts/webnavbar :: webnav"></header>
+    <header th:replace="~{layouts/webnavbar :: webnav}"></header>
 
     <!-- Hero Section -->
     <section
@@ -669,7 +669,7 @@
         </div>
       </div>
     </footer> -->
-    <footer th:replace="layouts/webfooter :: webfoot"></footer>
+    <footer th:replace="~{layouts/webfooter :: webfoot}"></footer>
 
     <!-- Floating Order Button (Mobile) -->
     <div class="fixed bottom-6 right-6 md:hidden">

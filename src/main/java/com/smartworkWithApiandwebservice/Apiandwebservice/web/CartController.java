@@ -35,7 +35,4 @@ public class CartController {
         cartService.setInc(id);
         return "redirect:/cart";
     }
-
-
-    
 }

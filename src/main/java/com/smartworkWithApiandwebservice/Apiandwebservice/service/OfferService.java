@@ -18,5 +18,4 @@ public class OfferService {
     public void createOffer(Offer offer) {
         offerRepository.save(offer);
     }
-
 }

@@ -89,10 +89,8 @@ public class HomeWebController {
             return "menu";
       }
        else if (!"all".equalsIgnoreCase(category)) {
-        }
-        else{
-            System.out.println("All");
-        }
+        // Filter products by category
+       }
     List<Product> products=productService.findAll();
     model.addAttribute("products", products);
     return "menu";

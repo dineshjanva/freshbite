@@ -11,14 +11,21 @@ import org.springframework.http.ResponseEntity;
 
 import com.smartworkWithApiandwebservice.Apiandwebservice.service.ProductService;
 import com.smartworkWithApiandwebservice.Apiandwebservice.service.UserService;
+import com.smartworkWithApiandwebservice.Apiandwebservice.model.Offer;
 import com.smartworkWithApiandwebservice.Apiandwebservice.model.Product;
 import com.smartworkWithApiandwebservice.Apiandwebservice.model.User;
+import com.smartworkWithApiandwebservice.Apiandwebservice.repository.OfferRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import com.smartworkWithApiandwebservice.Apiandwebservice.dto.OfferDTO;
+// import org.springframework.web.bind.annotation.RequestParam;
 
 
-
+// import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("api")
@@ -29,6 +36,9 @@ public class HomeController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private OfferRepository offerRepository;
 
     // @GetMapping
     // public String home() {
@@ -61,6 +71,29 @@ public class HomeController {
     public List<Product> product() {
         return productService.findAll();
     }
+
+    @PostMapping("offer")
+    public String offerData(@RequestBody Offer offer) {
+        // TODO: process POST request
+        offerRepository.save(offer);
+        return "Offer data processed successfully";
+    }
+
+    @GetMapping("alloffer")
+    public List<OfferDTO> alloffer() {
+       return offerRepository.findAll().stream()
+        .map(o -> new OfferDTO(o.getId(), o.getTitle(), o.getDescription(), o.getDiscount(), o.getStartDate(), o.getEndDate()))
+        .toList();   
+    }
+    @GetMapping("activeoffer")
+    public List<OfferDTO> offer_active() {
+        LocalDate today = LocalDate.now();
+        return offerRepository.findActiveOffers(today).stream()
+        .map(o -> new OfferDTO(o.getId(), o.getTitle(), o.getDescription(), o.getDiscount(), o.getStartDate(), o.getEndDate()))
+        .toList();
+    }
     
+
+
     
 }
